@@ -1,13 +1,18 @@
 package br.com.projeto.edutech.interface_grafica;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author JoÃ£o Gabriel Nascimento
  */
-public class InterfacePrincipal extends javax.swing.JFrame {
+public class InterfacePrincipal extends JFrame {
 
     private String nomeNovaSerie;
-    private int nEpisodiosNovaSerie;
+    private int episodiosNovaSerie;
 
     /**
      * Creates new form InterfacePrincipal
@@ -25,83 +30,88 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BotoesSituacao = new javax.swing.ButtonGroup();
-        Gerenciamento = new javax.swing.JPanel();
-        Nome = new javax.swing.JLabel();
-        NomeCampo = new javax.swing.JTextField();
-        TemporadasSagas = new javax.swing.JLabel();
-        TemporadasSagasCampo = new javax.swing.JTextField();
-        Episodios = new javax.swing.JLabel();
-        EpisodiosCampo = new javax.swing.JTextField();
-        Situacao = new javax.swing.JLabel();
-        Assistirei = new javax.swing.JRadioButton();
-        Assistindo = new javax.swing.JRadioButton();
-        Retomar = new javax.swing.JRadioButton();
-        Terminado = new javax.swing.JRadioButton();
-        Adicionar = new javax.swing.JButton();
-        PainelTitulo = new javax.swing.JPanel();
-        Titulo = new javax.swing.JLabel();
+        Nome = new JLabel();
+        Titulo = new JLabel();
+        Situacao = new JLabel();
+        Episodios = new JLabel();
+        TemporadasSagas = new JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        PainelTitulo = new JPanel();
+        Gerenciamento = new JPanel();
+
+        NomeCampo = new JTextField();
+        EpisodiosCampo = new JTextField();
+        TemporadasSagasCampo = new JTextField();
+
+        Adicionar = new JButton();
+
+        Retomar = new JRadioButton();
+        Assistirei = new JRadioButton();
+        Assistindo = new JRadioButton();
+        Terminado = new JRadioButton();
+
+        BotoesSituacao = new ButtonGroup();
+
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Organizador de Séries");
-        setLocation(new java.awt.Point(800, 400));
+        setLocation(new Point(800, 400));
         setResizable(false);
 
-        Nome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Nome.setFont(new Font("Arial", Font.BOLD, 18)); // NOI18N
         Nome.setText("Nome:");
 
-        TemporadasSagas.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        TemporadasSagas.setFont(new Font("Arial", Font.BOLD, 18)); // NOI18N
         TemporadasSagas.setText("Temporadas:");
 
-        Episodios.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Episodios.setFont(new Font("Arial", Font.BOLD, 18)); // NOI18N
         Episodios.setText("Episódios:");
 
-        Situacao.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Situacao.setFont(new Font("Arial", Font.BOLD, 18)); // NOI18N
         Situacao.setText("Situação:");
 
         BotoesSituacao.add(Assistirei);
-        Assistirei.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Assistirei.setFont(new Font("Arial", Font.PLAIN, 14)); // NOI18N
         Assistirei.setText("Assistirei");
 
         BotoesSituacao.add(Assistindo);
-        Assistindo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Assistindo.setFont(new Font("Arial", Font.PLAIN, 14)); // NOI18N
         Assistindo.setText("Assistindo");
 
         BotoesSituacao.add(Retomar);
-        Retomar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Retomar.setFont(new Font("Arial", Font.PLAIN, 14)); // NOI18N
         Retomar.setText("Retomar");
 
         BotoesSituacao.add(Terminado);
-        Terminado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Terminado.setFont(new Font("Arial", Font.PLAIN, 14)); // NOI18N
         Terminado.setText("Terminado");
 
-        Adicionar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        Adicionar.setFont(new Font("Arial", Font.PLAIN, 24)); // NOI18N
         Adicionar.setText("Adicionar");
-        Adicionar.setMaximumSize(new java.awt.Dimension(70, 37));
-        Adicionar.setMinimumSize(new java.awt.Dimension(70, 37));
-        Adicionar.setPreferredSize(new java.awt.Dimension(70, 37));
+        Adicionar.setMaximumSize(new Dimension(70, 37));
+        Adicionar.setMinimumSize(new Dimension(70, 37));
+        Adicionar.setPreferredSize(new Dimension(70, 37));
 
-        javax.swing.GroupLayout GerenciamentoLayout = new javax.swing.GroupLayout(Gerenciamento);
+        GroupLayout GerenciamentoLayout = new GroupLayout(Gerenciamento);
         Gerenciamento.setLayout(GerenciamentoLayout);
         GerenciamentoLayout.setHorizontalGroup(
-            GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            GerenciamentoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(GerenciamentoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Adicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
+                .addGroup(GerenciamentoLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(Adicionar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
                         .addComponent(Nome)
                         .addGap(18, 18, 18)
                         .addComponent(NomeCampo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
+                    .addGroup(GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
                         .addComponent(TemporadasSagas)
                         .addGap(18, 18, 18)
                         .addComponent(TemporadasSagasCampo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
+                    .addGroup(GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
                         .addComponent(Episodios)
                         .addGap(18, 18, 18)
                         .addComponent(EpisodiosCampo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
+                    .addGroup(GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
                         .addComponent(Situacao)
                         .addGap(18, 18, 18)
                         .addComponent(Assistirei)
@@ -111,74 +121,79 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                         .addComponent(Retomar)
                         .addGap(20, 20, 20)
                         .addComponent(Terminado)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
         GerenciamentoLayout.setVerticalGroup(
-            GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            GerenciamentoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(GerenciamentoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(GerenciamentoLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(Nome)
-                    .addComponent(NomeCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NomeCampo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(GerenciamentoLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(TemporadasSagas)
-                    .addComponent(TemporadasSagasCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TemporadasSagasCampo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(GerenciamentoLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(Episodios)
-                    .addComponent(EpisodiosCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EpisodiosCampo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(GerenciamentoLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(Assistirei)
                     .addComponent(Assistindo)
                     .addComponent(Situacao)
                     .addComponent(Retomar)
                     .addComponent(Terminado))
                 .addGap(18, 18, 18)
-                .addComponent(Adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Adicionar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(156, Short.MAX_VALUE))
         );
 
-        Titulo.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Titulo.setFont(new Font("Arial", Font.BOLD, 48)); // NOI18N
+        Titulo.setHorizontalAlignment(SwingConstants.CENTER);
         Titulo.setText("Gerenciador de Séries");
 
-        javax.swing.GroupLayout PainelTituloLayout = new javax.swing.GroupLayout(PainelTitulo);
+        GroupLayout PainelTituloLayout = new GroupLayout(PainelTitulo);
         PainelTitulo.setLayout(PainelTituloLayout);
+
         PainelTituloLayout.setHorizontalGroup(
-            PainelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            PainelTituloLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(PainelTituloLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        PainelTituloLayout.setVerticalGroup(
-            PainelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelTituloLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addComponent(Titulo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        PainelTituloLayout.setVerticalGroup(
+            PainelTituloLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(PainelTituloLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PainelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Gerenciamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Titulo, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PainelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(Gerenciamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(PainelTitulo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Gerenciamento, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PainelTitulo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(Gerenciamento, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -195,25 +210,19 @@ public class InterfacePrincipal extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfacePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfacePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfacePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfacePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | UnsupportedLookAndFeelException | IllegalAccessException | InstantiationException ex) {
+            Logger.getLogger(InterfacePrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InterfacePrincipal().setVisible(true);
             }
@@ -221,21 +230,26 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Adicionar;
-    private javax.swing.JRadioButton Assistindo;
-    private javax.swing.JRadioButton Assistirei;
-    private javax.swing.ButtonGroup BotoesSituacao;
-    private javax.swing.JLabel Episodios;
-    private javax.swing.JTextField EpisodiosCampo;
-    private javax.swing.JPanel Gerenciamento;
-    private javax.swing.JLabel Nome;
-    private javax.swing.JTextField NomeCampo;
-    private javax.swing.JPanel PainelTitulo;
-    private javax.swing.JRadioButton Retomar;
-    private javax.swing.JLabel Situacao;
-    private javax.swing.JLabel TemporadasSagas;
-    private javax.swing.JTextField TemporadasSagasCampo;
-    private javax.swing.JRadioButton Terminado;
-    private javax.swing.JLabel Titulo;
+    private ButtonGroup BotoesSituacao;
+    private JButton Adicionar;
+
+    private JRadioButton Retomar;
+    private JRadioButton Terminado;
+    private JRadioButton Assistindo;
+    private JRadioButton Assistirei;
+
+    private JTextField NomeCampo;
+    private JTextField EpisodiosCampo;
+
+    private JPanel PainelTitulo;
+    private JPanel Gerenciamento;
+
+    private JLabel Nome;
+    private JLabel Titulo;
+    private JLabel Situacao;
+    private JLabel Episodios;
+    private JLabel TemporadasSagas;
+
+    private JTextField TemporadasSagasCampo;
     // End of variables declaration//GEN-END:variables
 }
