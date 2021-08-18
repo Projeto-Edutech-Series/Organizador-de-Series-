@@ -51,7 +51,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         Nome.setText("Nome:");
 
         TemporadasSagas.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        TemporadasSagas.setText("Temporadas/Sagas:");
+        TemporadasSagas.setText("Temporadas:");
 
         Episodios.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Episodios.setText("Episódios:");
