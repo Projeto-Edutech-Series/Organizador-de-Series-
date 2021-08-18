@@ -2,12 +2,13 @@ package br.com.projeto.edutech.interface_grafica;
 
 /**
  *
- * @author João Gabriel Nascimento
+ * @author JoÃ£o Gabriel Nascimento
  */
 public class InterfacePrincipal extends javax.swing.JFrame {
-    
+
     private String nomeNovaSerie;
     private int nEpisodiosNovaSerie;
+
     /**
      * Creates new form InterfacePrincipal
      */
@@ -24,140 +25,140 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupStatus = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        LabelNome = new javax.swing.JLabel();
-        TextFieldNome = new javax.swing.JTextField();
-        LabelStatus = new javax.swing.JLabel();
-        RarioButtonAssistido = new javax.swing.JRadioButton();
-        RadioButtonAssistindo = new javax.swing.JRadioButton();
-        RadioButtonAssistirei = new javax.swing.JRadioButton();
-        LabelNome1 = new javax.swing.JLabel();
-        TextFieldEpisodios = new javax.swing.JTextField();
-        ButtonAdicionar = new javax.swing.JButton();
+        BotoesSituacao = new javax.swing.ButtonGroup();
+        Gerenciamento = new javax.swing.JPanel();
+        Nome = new javax.swing.JLabel();
+        NomeCampo = new javax.swing.JTextField();
+        TemporadasSagas = new javax.swing.JLabel();
+        TemporadasSagasCampo = new javax.swing.JTextField();
+        Episodios = new javax.swing.JLabel();
+        EpisodiosCampo = new javax.swing.JTextField();
+        Situacao = new javax.swing.JLabel();
+        Assistirei = new javax.swing.JRadioButton();
+        Assistindo = new javax.swing.JRadioButton();
+        Retomar = new javax.swing.JRadioButton();
+        Terminado = new javax.swing.JRadioButton();
+        Adicionar = new javax.swing.JButton();
+        PainelTitulo = new javax.swing.JPanel();
+        Titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Organizador de Séries");
         setLocation(new java.awt.Point(800, 400));
         setResizable(false);
 
-        LabelNome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        LabelNome.setText("Nome:");
-        LabelNome.setToolTipText("Nome da série");
-        LabelNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Nome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Nome.setText("Nome:");
 
-        TextFieldNome.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                TextFieldNomeInputMethodTextChanged(evt);
-            }
-        });
-        TextFieldNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextFieldNomeActionPerformed(evt);
-            }
-        });
+        TemporadasSagas.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        TemporadasSagas.setText("Temporadas/Sagas:");
 
-        LabelStatus.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        LabelStatus.setText("Status:");
-        LabelStatus.setToolTipText("Status da série");
+        Episodios.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Episodios.setText("Episódios:");
 
-        buttonGroupStatus.add(RarioButtonAssistido);
-        RarioButtonAssistido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        RarioButtonAssistido.setText("Assistido");
-        RarioButtonAssistido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RarioButtonAssistidoActionPerformed(evt);
-            }
-        });
+        Situacao.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Situacao.setText("Situação:");
 
-        buttonGroupStatus.add(RadioButtonAssistindo);
-        RadioButtonAssistindo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        RadioButtonAssistindo.setText("Assistindo");
-        RadioButtonAssistindo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadioButtonAssistindoActionPerformed(evt);
-            }
-        });
+        BotoesSituacao.add(Assistirei);
+        Assistirei.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Assistirei.setText("Assistirei");
 
-        buttonGroupStatus.add(RadioButtonAssistirei);
-        RadioButtonAssistirei.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        RadioButtonAssistirei.setText("Assistirei");
-        RadioButtonAssistirei.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadioButtonAssistireiActionPerformed(evt);
-            }
-        });
+        BotoesSituacao.add(Assistindo);
+        Assistindo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Assistindo.setText("Assistindo");
 
-        LabelNome1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        LabelNome1.setText("Episódios:");
-        LabelNome1.setToolTipText("Nome da série");
-        LabelNome1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotoesSituacao.add(Retomar);
+        Retomar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Retomar.setText("Retomar");
 
-        TextFieldEpisodios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextFieldEpisodiosActionPerformed(evt);
-            }
-        });
+        BotoesSituacao.add(Terminado);
+        Terminado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Terminado.setText("Terminado");
 
-        ButtonAdicionar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        ButtonAdicionar.setText("Adicionar");
-        ButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonAdicionarActionPerformed(evt);
-            }
-        });
+        Adicionar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        Adicionar.setText("Adicionar");
+        Adicionar.setMaximumSize(new java.awt.Dimension(70, 37));
+        Adicionar.setMinimumSize(new java.awt.Dimension(70, 37));
+        Adicionar.setPreferredSize(new java.awt.Dimension(70, 37));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelStatus))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(RarioButtonAssistido)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(RadioButtonAssistindo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(RadioButtonAssistirei))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(LabelNome1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextFieldEpisodios, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(183, 183, 183)
-                .addComponent(ButtonAdicionar)
+        javax.swing.GroupLayout GerenciamentoLayout = new javax.swing.GroupLayout(Gerenciamento);
+        Gerenciamento.setLayout(GerenciamentoLayout);
+        GerenciamentoLayout.setHorizontalGroup(
+            GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GerenciamentoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(Adicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
+                        .addComponent(Nome)
+                        .addGap(18, 18, 18)
+                        .addComponent(NomeCampo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
+                        .addComponent(TemporadasSagas)
+                        .addGap(18, 18, 18)
+                        .addComponent(TemporadasSagasCampo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
+                        .addComponent(Episodios)
+                        .addGap(18, 18, 18)
+                        .addComponent(EpisodiosCampo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, GerenciamentoLayout.createSequentialGroup()
+                        .addComponent(Situacao)
+                        .addGap(18, 18, 18)
+                        .addComponent(Assistirei)
+                        .addGap(18, 18, 18)
+                        .addComponent(Assistindo)
+                        .addGap(18, 18, 18)
+                        .addComponent(Retomar)
+                        .addGap(20, 20, 20)
+                        .addComponent(Terminado)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RarioButtonAssistido)
-                    .addComponent(RadioButtonAssistindo)
-                    .addComponent(RadioButtonAssistirei))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextFieldEpisodios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addComponent(ButtonAdicionar)
-                .addContainerGap(29, Short.MAX_VALUE))
+        GerenciamentoLayout.setVerticalGroup(
+            GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GerenciamentoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Nome)
+                    .addComponent(NomeCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TemporadasSagas)
+                    .addComponent(TemporadasSagasCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Episodios)
+                    .addComponent(EpisodiosCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(GerenciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Assistirei)
+                    .addComponent(Assistindo)
+                    .addComponent(Situacao)
+                    .addComponent(Retomar)
+                    .addComponent(Terminado))
+                .addGap(18, 18, 18)
+                .addComponent(Adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(156, Short.MAX_VALUE))
+        );
+
+        Titulo.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Titulo.setText("Gerenciador de Séries");
+
+        javax.swing.GroupLayout PainelTituloLayout = new javax.swing.GroupLayout(PainelTitulo);
+        PainelTitulo.setLayout(PainelTituloLayout);
+        PainelTituloLayout.setHorizontalGroup(
+            PainelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelTituloLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        PainelTituloLayout.setVerticalGroup(
+            PainelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelTituloLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,47 +167,23 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PainelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Gerenciamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addComponent(PainelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(Gerenciamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldNomeActionPerformed
-        
-    }//GEN-LAST:event_TextFieldNomeActionPerformed
-
-    private void RarioButtonAssistidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RarioButtonAssistidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RarioButtonAssistidoActionPerformed
-
-    private void RadioButtonAssistindoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonAssistindoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioButtonAssistindoActionPerformed
-
-    private void RadioButtonAssistireiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonAssistireiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioButtonAssistireiActionPerformed
-
-    private void TextFieldEpisodiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldEpisodiosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldEpisodiosActionPerformed
-
-    private void ButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAdicionarActionPerformed
-        System.out.println(this.nomeNovaSerie);
-    }//GEN-LAST:event_ButtonAdicionarActionPerformed
-
-    private void TextFieldNomeInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_TextFieldNomeInputMethodTextChanged
-        this.nomeNovaSerie = evt.getText().toString();
-    }//GEN-LAST:event_TextFieldNomeInputMethodTextChanged
 
     /**
      * @param args the command line arguments
@@ -244,16 +221,21 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonAdicionar;
-    private javax.swing.JLabel LabelNome;
-    private javax.swing.JLabel LabelNome1;
-    private javax.swing.JLabel LabelStatus;
-    private javax.swing.JRadioButton RadioButtonAssistindo;
-    private javax.swing.JRadioButton RadioButtonAssistirei;
-    private javax.swing.JRadioButton RarioButtonAssistido;
-    private javax.swing.JTextField TextFieldEpisodios;
-    private javax.swing.JTextField TextFieldNome;
-    private javax.swing.ButtonGroup buttonGroupStatus;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton Adicionar;
+    private javax.swing.JRadioButton Assistindo;
+    private javax.swing.JRadioButton Assistirei;
+    private javax.swing.ButtonGroup BotoesSituacao;
+    private javax.swing.JLabel Episodios;
+    private javax.swing.JTextField EpisodiosCampo;
+    private javax.swing.JPanel Gerenciamento;
+    private javax.swing.JLabel Nome;
+    private javax.swing.JTextField NomeCampo;
+    private javax.swing.JPanel PainelTitulo;
+    private javax.swing.JRadioButton Retomar;
+    private javax.swing.JLabel Situacao;
+    private javax.swing.JLabel TemporadasSagas;
+    private javax.swing.JTextField TemporadasSagasCampo;
+    private javax.swing.JRadioButton Terminado;
+    private javax.swing.JLabel Titulo;
     // End of variables declaration//GEN-END:variables
 }
