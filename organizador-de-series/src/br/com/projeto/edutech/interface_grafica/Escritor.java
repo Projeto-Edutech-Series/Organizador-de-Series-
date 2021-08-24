@@ -28,6 +28,26 @@ public class Escritor {
 				return false;
 			}
 			
+//	        FileWriter writer;
+//
+//	        try {
+//	            writer = new FileWriter("series.txt", true);
+//	        } catch (IOException e) {
+//	            e.printStackTrace();
+//	            return false;
+//	        }
+//
+//	        PrintWriter saida = new PrintWriter(writer, true);
+//	        saida.println(nome + ";" + temporadas + ";" + episodios + ";");
+//	        
+//	        saida.close();
+//	        try {
+//	            writer.close();
+//	        } catch (IOException e) {
+//	            e.printStackTrace();
+//	        }
+			
+			
 			BufferedWriter bw = new BufferedWriter(new FileWriter("series.txt"));
 			
 			bw.write(nome + ";");
@@ -45,7 +65,7 @@ public class Escritor {
 	}
 	
 	private boolean verificaInformacoes(JTextField campoNome, JTextField campoTemporadas, JTextField campoEpisodios, ButtonGroup grupoAlternativas) {		
-		if(!campoNome.getText().isEmpty()) {
+		if(!campoNome.getText().strip().isEmpty()) {
 			nome = campoNome.getText();
 			
 		} else {
@@ -65,7 +85,7 @@ public class Escritor {
 //		});
 
 		
-		if(!campoTemporadas.getText().isEmpty()) {
+		if(!campoTemporadas.getText().strip().isEmpty()) {
 			try {
 				temporadas = Integer.parseInt(campoTemporadas.getText());							
 			} catch(Exception e) {
@@ -76,7 +96,7 @@ public class Escritor {
 			return true;
 		}
 		
-		if(!campoEpisodios.getText().isEmpty()) {
+		if(!campoEpisodios.getText().strip().isEmpty()) {
 			try {
 				episodios = Integer.parseInt(campoEpisodios.getText());							
 			} catch(Exception e) {
