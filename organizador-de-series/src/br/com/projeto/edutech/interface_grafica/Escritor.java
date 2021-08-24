@@ -1,8 +1,10 @@
 package br.com.projeto.edutech.interface_grafica;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
 import javax.swing.ButtonGroup;
@@ -43,7 +45,7 @@ public class Escritor {
 	}
 	
 	private boolean verificaInformacoes(JTextField campoNome, JTextField campoTemporadas, JTextField campoEpisodios, ButtonGroup grupoAlternativas) {		
-		if(!campoNome.getText().isBlank()) {
+		if(!campoNome.getText().isEmpty()) {
 			nome = campoNome.getText();
 			
 		} else {
@@ -63,7 +65,7 @@ public class Escritor {
 //		});
 
 		
-		if(!campoTemporadas.getText().isBlank()) {
+		if(!campoTemporadas.getText().isEmpty()) {
 			try {
 				temporadas = Integer.parseInt(campoTemporadas.getText());							
 			} catch(Exception e) {
@@ -74,7 +76,7 @@ public class Escritor {
 			return true;
 		}
 		
-		if(!campoEpisodios.getText().isBlank()) {
+		if(!campoEpisodios.getText().isEmpty()) {
 			try {
 				episodios = Integer.parseInt(campoEpisodios.getText());							
 			} catch(Exception e) {
