@@ -140,7 +140,12 @@ public class MenuPrincipal {
 		BotaoAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {			
 				if(escritor.adiciona(CampoNome, CampoTemporadas, CampoEpisodios, GrupoAlternativas)) {
-					JOptionPane.showMessageDialog(null, escritor.mudaEncode("Série adicionada"));					
+					JOptionPane.showMessageDialog(null, escritor.mudaEncode(
+							"A série " + "'" + CampoNome.getText().strip() + "'" + " foi adicionada!"), escritor.mudaEncode("Série adicionada"), 1);		
+					CampoNome.setText(null);
+					CampoTemporadas.setText(null);
+					CampoTemporadas.setText(null);
+					GrupoAlternativas.clearSelection();
 				}
 			}
 		});
