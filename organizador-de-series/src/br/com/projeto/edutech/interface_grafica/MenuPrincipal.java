@@ -5,10 +5,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Iterator;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -19,7 +15,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import java.nio.charset.StandardCharsets;
 
 public class MenuPrincipal {
 
@@ -28,76 +23,8 @@ public class MenuPrincipal {
 	private JTextField CampoTemporadas;
 	private JTextField CampoEpisodios;
 	private final ButtonGroup GrupoAlternativas = new ButtonGroup();
-	private String status;
-	private String nome;
-	private int temporadas;
-	private int episodios;
+	private Escritor escritor = new Escritor();
 	
-	
-	/**
-	 * Adiciona a série com as informações fornecidas nos campos de texto e RadioButton a um arquivo txt.
-	 */
-	private void adiciona() {
-		try {
-//			if(verificaInformacoes()) {
-//				return;
-//			}
-			
-			BufferedWriter bw = new BufferedWriter(new FileWriter("series.txt"));
-			
-			bw.write(CampoNome.getText() + ";");
-			bw.write(CampoTemporadas.getText() + ";");
-			bw.write(CampoEpisodios.getText() + ";");
-			bw.write(status + ";");
-			bw.newLine();
-			
-			bw.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	private boolean verificaInformacoes() {
-		if(CampoNome.getText() != null | CampoNome.getText() != "") {
-			nome = CampoNome.getText();
-			
-		} else {
-			JOptionPane.showMessageDialog(null, "Nenhum nome informado", "Informação não fornecida", 1);
-			return true;
-		}
-				// a verificação do status precisa ser refeita
-//		GrupoAlternativas.getElements().asIterator().forEachRemaining(botao -> {
-//			System.out.println(botao.getClass());
-//			if(botao.isSelected()) {
-//				status = botao.getText();
-//			} else {
-//				
-//				JOptionPane.showMessageDialog(null, "Nenhum status selecionado", "Informação não fornecida", 1);
-//				return;
-//			}		
-//		});
-
-		
-		if(CampoTemporadas.getText() != null | CampoTemporadas.getText() != "") {
-			temporadas = Integer.parseInt(CampoTemporadas.getText());
-			
-		} else {
-			JOptionPane.showMessageDialog(null, "Número de temporadas não informado", "Informação não fornecida", 1);
-			return true;
-		}
-		
-		if(CampoEpisodios.getText() != null | CampoEpisodios.getText() != "") {
-			episodios = Integer.parseInt(CampoEpisodios.getText());
-			
-		} else {		
-			JOptionPane.showMessageDialog(null, "Número de temporadas não informado", "Informação não fornecida", 1);
-			return true;
-		}
-		
-		return false;
-	}
-
 	/**
 	 * Launch the application.
 	 */
@@ -131,22 +58,22 @@ public class MenuPrincipal {
 	 */
 	private void initialize() {
 		frmMenuAdicionar = new JFrame();
-		frmMenuAdicionar.setTitle("Menu adicionar");
+		frmMenuAdicionar.setTitle("Menu principal");
 		frmMenuAdicionar.setResizable(false);
 		frmMenuAdicionar.setBounds(100, 100, 640, 480);
 		frmMenuAdicionar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMenuAdicionar.getContentPane().setLayout(null);
 		frmMenuAdicionar.setLocation(600, 200);
 		
-		JLabel TextoTitulo = new JLabel(new String("organizador de séries".getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8).toUpperCase());
+		JLabel TextoTitulo = new JLabel(escritor.mudaEncode("organizador de séries").toUpperCase());
 		TextoTitulo.setForeground(Color.BLACK);
 		TextoTitulo.setBackground(Color.LIGHT_GRAY);
 		TextoTitulo.setFont(new Font("Arial", Font.BOLD, 30));
 		TextoTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		TextoTitulo.setBounds(6, 10, 612, 60);
+		TextoTitulo.setBounds(6, 6, 612, 60);
 		frmMenuAdicionar.getContentPane().add(TextoTitulo);
 		
-		JLabel TextoNome = new JLabel(new String("nome".getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8).toUpperCase());
+		JLabel TextoNome = new JLabel("nome".toUpperCase());
 		TextoNome.setBackground(Color.LIGHT_GRAY);
 		TextoNome.setHorizontalAlignment(SwingConstants.CENTER);
 		TextoNome.setFont(new Font("Arial", Font.BOLD, 20));
@@ -159,7 +86,7 @@ public class MenuPrincipal {
 		frmMenuAdicionar.getContentPane().add(CampoNome);
 		CampoNome.setColumns(10);
 		
-		JLabel TextoTemporadas = new JLabel(new String("temporadas".getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8).toUpperCase());
+		JLabel TextoTemporadas = new JLabel("temporadas".toUpperCase());
 		TextoTemporadas.setHorizontalAlignment(SwingConstants.CENTER);
 		TextoTemporadas.setFont(new Font("Arial", Font.BOLD, 20));
 		TextoTemporadas.setBackground(Color.LIGHT_GRAY);
@@ -172,7 +99,7 @@ public class MenuPrincipal {
 		frmMenuAdicionar.getContentPane().add(CampoTemporadas);
 		CampoTemporadas.setColumns(10);
 		
-		JLabel TextoEpisodios = new JLabel(new String("episódios".getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8).toUpperCase());
+		JLabel TextoEpisodios = new JLabel(escritor.mudaEncode("episódios").toUpperCase());
 		TextoEpisodios.setHorizontalAlignment(SwingConstants.CENTER);
 		TextoEpisodios.setFont(new Font("Arial", Font.BOLD, 20));
 		TextoEpisodios.setBackground(Color.LIGHT_GRAY);
@@ -185,39 +112,36 @@ public class MenuPrincipal {
 		frmMenuAdicionar.getContentPane().add(CampoEpisodios);
 		CampoEpisodios.setColumns(10);
 		
-		JRadioButton AlternativaAssistirei = new JRadioButton(new String("assistirei".getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8).toUpperCase());
+		JRadioButton AlternativaAssistirei = new JRadioButton("assistirei".toUpperCase());
 		GrupoAlternativas.add(AlternativaAssistirei);
 		AlternativaAssistirei.setFont(new Font("Arial", Font.BOLD, 16));
-		AlternativaAssistirei.setBounds(6, 250, 115, 31);
+		AlternativaAssistirei.setBounds(37, 250, 115, 31);
 		frmMenuAdicionar.getContentPane().add(AlternativaAssistirei);
 		
-		JRadioButton AlternativaRetomarei = new JRadioButton(new String("retomarei".getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8).toUpperCase());
+		JRadioButton AlternativaRetomarei = new JRadioButton("retomarei".toUpperCase());
 		GrupoAlternativas.add(AlternativaRetomarei);
 		AlternativaRetomarei.setFont(new Font("Arial", Font.BOLD, 16));
-		AlternativaRetomarei.setBounds(133, 250, 122, 31);
+		AlternativaRetomarei.setBounds(174, 250, 122, 31);
 		frmMenuAdicionar.getContentPane().add(AlternativaRetomarei);
 		
-		JRadioButton AlternativaAssistindo = new JRadioButton(new String("assistido".getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8).toUpperCase());
+		JRadioButton AlternativaAssistindo = new JRadioButton("assistido".toUpperCase());
 		GrupoAlternativas.add(AlternativaAssistindo);
 		AlternativaAssistindo.setFont(new Font("Arial", Font.BOLD, 16));
-		AlternativaAssistindo.setBounds(267, 250, 124, 31);
+		AlternativaAssistindo.setBounds(308, 250, 124, 31);
 		frmMenuAdicionar.getContentPane().add(AlternativaAssistindo);
 		
-		JRadioButton AlternativaTerminado = new JRadioButton(new String("terminado".getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8).toUpperCase());
+		JRadioButton AlternativaTerminado = new JRadioButton("terminado".toUpperCase());
 		GrupoAlternativas.add(AlternativaTerminado);
 		AlternativaTerminado.setFont(new Font("Arial", Font.BOLD, 16));
-		AlternativaTerminado.setBounds(403, 250, 123, 31);
+		AlternativaTerminado.setBounds(432, 250, 123, 31);
 		frmMenuAdicionar.getContentPane().add(AlternativaTerminado);
 		
-		JButton BotaoAdicionar = new JButton(new String("adicionar série".getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8).toUpperCase());
+		JButton BotaoAdicionar = new JButton(escritor.mudaEncode("adicionar série".toUpperCase()));
 		BotaoAdicionar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				String msg = "Nome: " + CampoNome.getText() + System.lineSeparator() +
-//				"Temporadas: " + CampoTemporadas.getText() + System.lineSeparator() +
-//				"Episódios: " + CampoEpisodios.getText() + System.lineSeparator() +
-				
-				adiciona();
-				JOptionPane.showMessageDialog(null, new String("Série adicionada".getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+			public void actionPerformed(ActionEvent e) {			
+				if(escritor.adiciona(CampoNome, CampoTemporadas, CampoEpisodios, GrupoAlternativas)) {
+					JOptionPane.showMessageDialog(null, escritor.mudaEncode("Série adicionada"));					
+				}
 			}
 		});
 		BotaoAdicionar.setFont(new Font("Arial", Font.BOLD, 20));
