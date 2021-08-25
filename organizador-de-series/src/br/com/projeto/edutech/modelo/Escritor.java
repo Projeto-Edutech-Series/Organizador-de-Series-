@@ -129,3 +129,4 @@ public class Escritor {
 		return new String(str.getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
 	}
 }
+
