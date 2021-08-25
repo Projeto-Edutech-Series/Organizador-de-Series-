@@ -67,7 +67,7 @@ public class MenuPrincipal {
 		frmMenuAdicionar.getContentPane().setLayout(null);
 		frmMenuAdicionar.setLocation(600, 200);
 		
-		JLabel TextoTitulo = new JLabel(escritor.mudaEncode("organizador de sÃ©ries").toUpperCase());
+		JLabel TextoTitulo = new JLabel(escritor.mudaEncode("organizador de séries").toUpperCase());
 		TextoTitulo.setForeground(Color.BLACK);
 		TextoTitulo.setBackground(Color.LIGHT_GRAY);
 		TextoTitulo.setFont(new Font("Arial", Font.BOLD, 30));
@@ -101,7 +101,7 @@ public class MenuPrincipal {
 		frmMenuAdicionar.getContentPane().add(CampoTemporadas);
 		CampoTemporadas.setColumns(10);
 		
-		JLabel TextoEpisodios = new JLabel(escritor.mudaEncode("episÃ³dios").toUpperCase());
+		JLabel TextoEpisodios = new JLabel(escritor.mudaEncode("episódios").toUpperCase());
 		TextoEpisodios.setHorizontalAlignment(SwingConstants.CENTER);
 		TextoEpisodios.setFont(new Font("Arial", Font.BOLD, 20));
 		TextoEpisodios.setBackground(Color.LIGHT_GRAY);
@@ -138,12 +138,12 @@ public class MenuPrincipal {
 		AlternativaTerminado.setBounds(432, 250, 123, 31);
 		frmMenuAdicionar.getContentPane().add(AlternativaTerminado);
 		
-		JButton BotaoAdicionar = new JButton(escritor.mudaEncode("adicionar sÃ©rie".toUpperCase()));
+		JButton BotaoAdicionar = new JButton(escritor.mudaEncode("adicionar série".toUpperCase()));
 		BotaoAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {			
 				if(escritor.adiciona(CampoNome, CampoTemporadas, CampoEpisodios, GrupoAlternativas)) {
 					JOptionPane.showMessageDialog(null, escritor.mudaEncode(
-							"A sÃ©rie " + "'" + CampoNome.getText().strip() + "'" + " foi adicionada!"), escritor.mudaEncode("SÃ©rie adicionada"), 1);		
+							"A série " + "'" + CampoNome.getText().strip() + "'" + " foi adicionada!"), escritor.mudaEncode("Série adicionada"), 1);		
 					CampoNome.setText(null);
 					CampoTemporadas.setText(null);
 					CampoEpisodios.setText(null);

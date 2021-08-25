@@ -11,8 +11,8 @@ import javax.swing.JTextField;
 
 
 /**
- * Classe usada para escrever as informaÃ§Ãµes fornecidas pelo usuÃ¡rio em um arquivo txt.
- * @author Joao Gabriel N Silva
+ * Classe usada para escrever as informações fornecidas pelo usuário em um arquivo txt.
+ * @author João Gabriel N Silva
  */
 public class Escritor {
 	
@@ -23,14 +23,14 @@ public class Escritor {
 	
 	
 	/**
-	 * Adiciona a sÃ©rie com as informaÃ§Ãµes fornecidas nos campos de texto e RadioButton a um arquivo txt.
+	 * Adiciona a série com as informações fornecidas nos campos de texto e RadioButton a um arquivo txt.
 	 * 
-	 * @param campoNome Campo de texto do nome da sÃ©rie.
-	 * @param campoTemporadas Campo de texto do nÃºmero de temporadas.
-	 * @param campoEpisodios Campo de texto do nÃºmero de episÃ³dios.
-	 * @param grupoAlternativas Grupo de botÃµes com os botÃµes de status.
+	 * @param campoNome Campo de texto do nome da série.
+	 * @param campoTemporadas Campo de texto do número de temporadas.
+	 * @param campoEpisodios Campo de texto do número de episódios.
+	 * @param grupoAlternativas Grupo de botões com os botões de status.
 	 * 
-	 * @return Retorna true se passar pelo verificaÃ§Ã£o e a sÃ©rie for adicionada sem problemas.
+	 * @return Retorna true se passar pelo verificação e a série for adicionada sem problemas.
 	 */
 	public boolean adiciona(JTextField campoNome, JTextField campoTemporadas, JTextField campoEpisodios, ButtonGroup grupoAlternativas) {
 		try {
@@ -59,33 +59,33 @@ public class Escritor {
 	}
 	
 	/**
-	 * Faz a verificaÃ§Ã£o das informaÃ§Ãµes recebidas dos campos de texto e RadioButton.
+	 * Faz a verificaçãoo das informações recebidas dos campos de texto e RadioButton.
 	 * 
-	 * @param campoNome Campo de texto do nome da sÃ©rie.
-	 * @param campoTemporadas Campo de texto do nÃºmero de temporadas.
-	 * @param campoEpisodios Campo de texto do nÃºmero de episÃ³dios.
-	 * @param grupoAlternativas Grupo de botÃµes com os botÃµes de status.
+	 * @param campoNome Campo de texto do nome da série.
+	 * @param campoTemporadas Campo de texto do número de temporadas.
+	 * @param campoEpisodios Campo de texto do número de episódios.
+	 * @param grupoAlternativas Grupo de botões com os botões de status.
 	 * 
 	 * @return Retorna true se houver algo de errado com os dados fornecidos. Por exemplo nome em branco, ou uma letra 
-	 * onde deveria ser um nÃºmero.
+	 * onde deveria ser um número.
 	 */
 	private boolean verificaInformacoes(JTextField campoNome, JTextField campoTemporadas, JTextField campoEpisodios, ButtonGroup grupoAlternativas) {		
 		if(!campoNome.getText().strip().isEmpty()) {
 			nome = campoNome.getText().strip();
 			
 		} else {
-			JOptionPane.showMessageDialog(null, "Nenhum nome informado", mudaEncode("InformaÃ§Ã£o nÃ£o fornecida"), 1);
+			JOptionPane.showMessageDialog(null, "Nenhum nome informado", mudaEncode("Informação não fornecida"), 1);
 			campoNome.setText(null);
 			return true;
 		}
-				// a verificaÃ§Ã£o do status precisa ser refeita
+				// a verificação do status precisa ser refeita
 //		grupoAlternativas.getElements().asIterator().forEachRemaining(botao -> {
 //			System.out.println(botao.getClass());
 //			if(botao.isSelected()) {
 //				status = botao.getText();
 //			} else {
 //				
-//				JOptionPane.showMessageDialog(null, "Nenhum status selecionado", mudaEncode("InformaÃ§Ã£o nÃ£o fornecida"), 1);
+//				JOptionPane.showMessageDialog(null, "Nenhum status selecionado", mudaEncode("Informação não fornecida"), 1);
 //				return;
 //			}		
 //		});
@@ -95,11 +95,11 @@ public class Escritor {
 			try {
 				temporadas = Integer.parseInt(campoTemporadas.getText().strip());							
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(null, mudaEncode("O campo 'temporadas' deve conter um nÃºmero"), mudaEncode("InformaÃ§Ã£o incorreta"), 1);
+				JOptionPane.showMessageDialog(null, mudaEncode("O campo 'temporadas' deve conter um número"), mudaEncode("Informação incorreta"), 1);
 				campoTemporadas.setText(null);
 			}
 		} else {
-			JOptionPane.showMessageDialog(null, mudaEncode("NÃºmero de temporadas nÃ£o informado"), mudaEncode("InformaÃ§Ã£o nÃ£o fornecida"), 1);
+			JOptionPane.showMessageDialog(null, mudaEncode("Número de temporadas não informado"), mudaEncode("Informação não fornecida"), 1);
 			campoTemporadas.setText(null);
 			return true;
 		}
@@ -108,11 +108,11 @@ public class Escritor {
 			try {
 				episodios = Integer.parseInt(campoEpisodios.getText().strip());							
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(null, mudaEncode("O campo 'episÃ³dios' deve conter um nÃºmero"), mudaEncode("InformaÃ§Ã£o incorreta"), 1);
+				JOptionPane.showMessageDialog(null, mudaEncode("O campo 'episódios' deve conter um número"), mudaEncode("Informação incorreta"), 1);
 				campoEpisodios.setText(null);
 			}
 		} else {		
-			JOptionPane.showMessageDialog(null, mudaEncode("NÃºmero de episÃ³dios nÃ£o informado"), mudaEncode("InformaÃ§Ã£o nÃ£o fornecida"), 1);
+			JOptionPane.showMessageDialog(null, mudaEncode("Número de episódios não informado"), mudaEncode("Informacão não fornecida"), 1);
 			campoEpisodios.setText(null);
 			return true;
 		}

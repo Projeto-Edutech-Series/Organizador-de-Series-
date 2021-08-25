@@ -1,7 +1,7 @@
 package br.com.projeto.edutech.modelo;
 
 /**
- * Classe que serÃ¡ usada para ler as informaÃ§Ãµes arquivadas.
+ * Classe que será usada para ler as informações arquivadas.
  */
 public class Leitor {
 
