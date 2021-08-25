@@ -1,4 +1,4 @@
-package br.com.projeto.edutech.interface_grafica;
+package br.com.projeto.edutech.modelo;
 
 import java.io.FileWriter;
 import java.io.IOException;

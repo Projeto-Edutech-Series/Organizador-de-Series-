@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
+import br.com.projeto.edutech.modelo.Escritor;
+
 public class MenuPrincipal {
 
 	private JFrame frmMenuAdicionar;
@@ -144,7 +146,7 @@ public class MenuPrincipal {
 							"A série " + "'" + CampoNome.getText().strip() + "'" + " foi adicionada!"), escritor.mudaEncode("Série adicionada"), 1);		
 					CampoNome.setText(null);
 					CampoTemporadas.setText(null);
-					CampoTemporadas.setText(null);
+					CampoEpisodios.setText(null);
 					GrupoAlternativas.clearSelection();
 				}
 			}
