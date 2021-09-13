@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -18,6 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import br.com.projeto.edutech.dao.SeriesDAO;
+import br.com.projeto.edutech.modelo.InfoInvalidaException;
 import br.com.projeto.edutech.modelo.Serie;
 
 public class MenuPrincipal {
@@ -26,8 +29,9 @@ public class MenuPrincipal {
 	private JTextField CampoNome;
 	private JTextField CampoTemporadas;
 	private JTextField CampoEpisodios;
-	private final ButtonGroup GrupoAlternativas = new ButtonGroup();
+	private List<JRadioButton> botoesStatus = new ArrayList<JRadioButton>();
 	private SeriesDAO seriesDAO = new SeriesDAO("series.txt");
+	private final ButtonGroup buttonGroupStatus = new ButtonGroup();
 	
 	/**
 	 * Launch the application.
@@ -62,14 +66,14 @@ public class MenuPrincipal {
 	 */
 	private void initialize() {
 		frmMenuAdicionar = new JFrame();
-		frmMenuAdicionar.setTitle("Menu principal");
+		frmMenuAdicionar.setTitle("Menu Adicionar");
 		frmMenuAdicionar.setResizable(false);
 		frmMenuAdicionar.setBounds(100, 100, 640, 480);
 		frmMenuAdicionar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMenuAdicionar.getContentPane().setLayout(null);
 		frmMenuAdicionar.setLocation(600, 200);
 		
-		JLabel TextoTitulo = new JLabel("organizador de séries".toUpperCase());
+		JLabel TextoTitulo = new JLabel("ORGANIZADOR DE SÉRIES");
 		TextoTitulo.setForeground(Color.BLACK);
 		TextoTitulo.setBackground(Color.LIGHT_GRAY);
 		TextoTitulo.setFont(new Font("Arial", Font.BOLD, 30));
@@ -77,7 +81,7 @@ public class MenuPrincipal {
 		TextoTitulo.setBounds(6, 6, 612, 60);
 		frmMenuAdicionar.getContentPane().add(TextoTitulo);
 		
-		JLabel TextoNome = new JLabel("nome".toUpperCase());
+		JLabel TextoNome = new JLabel("NOME");
 		TextoNome.setBackground(Color.LIGHT_GRAY);
 		TextoNome.setHorizontalAlignment(SwingConstants.CENTER);
 		TextoNome.setFont(new Font("Arial", Font.BOLD, 20));
@@ -90,7 +94,7 @@ public class MenuPrincipal {
 		frmMenuAdicionar.getContentPane().add(CampoNome);
 		CampoNome.setColumns(10);
 		
-		JLabel TextoTemporadas = new JLabel("temporadas".toUpperCase());
+		JLabel TextoTemporadas = new JLabel("TEMPORADAS");
 		TextoTemporadas.setHorizontalAlignment(SwingConstants.CENTER);
 		TextoTemporadas.setFont(new Font("Arial", Font.BOLD, 20));
 		TextoTemporadas.setBackground(Color.LIGHT_GRAY);
@@ -103,7 +107,7 @@ public class MenuPrincipal {
 		frmMenuAdicionar.getContentPane().add(CampoTemporadas);
 		CampoTemporadas.setColumns(10);
 		
-		JLabel TextoEpisodios = new JLabel("episódios".toUpperCase());
+		JLabel TextoEpisodios = new JLabel("EPISÓDIOS");
 		TextoEpisodios.setHorizontalAlignment(SwingConstants.CENTER);
 		TextoEpisodios.setFont(new Font("Arial", Font.BOLD, 20));
 		TextoEpisodios.setBackground(Color.LIGHT_GRAY);
@@ -116,44 +120,52 @@ public class MenuPrincipal {
 		frmMenuAdicionar.getContentPane().add(CampoEpisodios);
 		CampoEpisodios.setColumns(10);
 		
-		JRadioButton AlternativaAssistirei = new JRadioButton("assistirei".toUpperCase());
-		GrupoAlternativas.add(AlternativaAssistirei);
+		JRadioButton AlternativaAssistirei = new JRadioButton("ASSISTIREI");
+		buttonGroupStatus.add(AlternativaAssistirei);
+		botoesStatus.add(AlternativaAssistirei);
 		AlternativaAssistirei.setFont(new Font("Arial", Font.BOLD, 16));
 		AlternativaAssistirei.setBounds(37, 250, 115, 31);
 		frmMenuAdicionar.getContentPane().add(AlternativaAssistirei);
 		
-		JRadioButton AlternativaRetomarei = new JRadioButton("retomarei".toUpperCase());
-		GrupoAlternativas.add(AlternativaRetomarei);
+		JRadioButton AlternativaRetomarei = new JRadioButton("RETOMAREI");
+		buttonGroupStatus.add(AlternativaRetomarei);
+		botoesStatus.add(AlternativaRetomarei);
 		AlternativaRetomarei.setFont(new Font("Arial", Font.BOLD, 16));
 		AlternativaRetomarei.setBounds(174, 250, 122, 31);
 		frmMenuAdicionar.getContentPane().add(AlternativaRetomarei);
 		
-		JRadioButton AlternativaAssistindo = new JRadioButton("assistido".toUpperCase());
-		GrupoAlternativas.add(AlternativaAssistindo);
+		JRadioButton AlternativaAssistindo = new JRadioButton("ASSISTIDO");
+		buttonGroupStatus.add(AlternativaAssistindo);
+		botoesStatus.add(AlternativaAssistindo);
 		AlternativaAssistindo.setFont(new Font("Arial", Font.BOLD, 16));
 		AlternativaAssistindo.setBounds(308, 250, 124, 31);
 		frmMenuAdicionar.getContentPane().add(AlternativaAssistindo);
 		
-		JRadioButton AlternativaTerminado = new JRadioButton("terminado".toUpperCase());
-		GrupoAlternativas.add(AlternativaTerminado);
+		JRadioButton AlternativaTerminado = new JRadioButton("TERMINADO");
+		buttonGroupStatus.add(AlternativaTerminado);
+		botoesStatus.add(AlternativaTerminado);
 		AlternativaTerminado.setFont(new Font("Arial", Font.BOLD, 16));
 		AlternativaTerminado.setBounds(432, 250, 123, 31);
 		frmMenuAdicionar.getContentPane().add(AlternativaTerminado);
 		
-		JButton BotaoAdicionar = new JButton("adicionar série".toUpperCase())
+		JButton BotaoAdicionar = new JButton("ADICIONAR SÉRIE")
 				;
 		BotaoAdicionar.addActionListener(new ActionListener() {
 			
-			public void actionPerformed(ActionEvent e) {			
-				if(seriesDAO.adiciona(new Serie(CampoNome, GrupoAlternativas, CampoTemporadas, CampoEpisodios))) {
+			public void actionPerformed(ActionEvent e) {	
+				try {		
+					if(seriesDAO.adiciona(new Serie(CampoNome, botoesStatus, CampoTemporadas, CampoEpisodios))) {
+						
+						JOptionPane.showMessageDialog(null, 
+								"A série " + "'" + CampoNome.getText().strip() + "'" + " foi adicionada!", "Série adicionada", 1);		
+						
+						CampoNome.setText(null);
+						CampoTemporadas.setText(null);
+						CampoEpisodios.setText(null);
+						buttonGroupStatus.clearSelection();
+					}
+				} catch(InfoInvalidaException iIE) {
 					
-					JOptionPane.showMessageDialog(null, 
-							"A série " + "'" + CampoNome.getText().strip() + "'" + " foi adicionada!", "Série adicionada", 1);		
-					
-					CampoNome.setText(null);
-					CampoTemporadas.setText(null);
-					CampoEpisodios.setText(null);
-					GrupoAlternativas.clearSelection();
 				}
 			}
 		});

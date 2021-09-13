@@ -3,11 +3,6 @@ package br.com.projeto.edutech.dao;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 import br.com.projeto.edutech.modelo.Serie;
 
@@ -29,13 +24,12 @@ public class SeriesDAO {
         try(FileWriter writer = new FileWriter(arquivo, true)) {
         	try(PrintWriter saida = new PrintWriter(writer, true)) {
         		saida.println(serie.getNome() + ";" + serie.getTemporadas() + ";" + serie.getEpisodios() + ";" + serie.getStatus());
+        		return true;
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
         }
-
-		return true;
+        return false;
 	}
 	
 
