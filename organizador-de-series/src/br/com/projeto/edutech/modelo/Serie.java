@@ -1,9 +1,7 @@
 package br.com.projeto.edutech.modelo;
 
-import java.util.List;
-
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /**
@@ -18,7 +16,7 @@ public class Serie {
 	private Integer temporadas;
 	private Integer episodios;
 
-	public Serie(JTextField nome, List<JRadioButton> status, JTextField temporadas, JTextField episodios) {
+	public Serie(JTextField nome, JComboBox<String> status, JTextField temporadas, JTextField episodios) {
 
 		verificaInformacoes(nome, status, temporadas, episodios);
 
@@ -40,7 +38,7 @@ public class Serie {
 		return episodios;
 	}
 
-	private void verificaInformacoes(JTextField campoNome, List<JRadioButton> campoStatus, JTextField campoTemporadas,
+	private void verificaInformacoes(JTextField campoNome, JComboBox<String> campoStatus, JTextField campoTemporadas,
 			JTextField campoEpisodios) {
 		if (!campoNome.getText().strip().isEmpty()) {
 			this.nome = campoNome.getText().strip();
@@ -74,15 +72,7 @@ public class Serie {
 			mostraMsgDeErro("Número de episódios não informado", "Informacão não fornecida");
 		}
 
-		for (JRadioButton botao : campoStatus) {
-			if (botao.isSelected()) {
-				this.status = botao.getText();
-			}
-		}
-		if(this.status == null) {
-			mostraMsgDeErro("Status não informado", "Informação não fornecida");
-		}
-
+		this.status = campoStatus.getSelectedItem().toString();
 	}
 
 	private void mostraMsgDeErro(String msg, String titulo) {
