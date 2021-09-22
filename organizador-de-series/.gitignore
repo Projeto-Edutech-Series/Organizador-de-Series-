@@ -1,5 +1,6 @@
 /.project
 /.settings
 /.classpath
-/series.txt
 /bin/
+/series.csv
+/series.txt
