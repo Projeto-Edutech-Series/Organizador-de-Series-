@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.projeto.edutech.modelo.InfoInvalidaException;
 import br.com.projeto.edutech.modelo.Serie;
 
 /**
@@ -78,20 +79,50 @@ public class SeriesDAO {
 			Integer episodiosNovo) {
 		List<Serie> series = listar();
 		try {
-			new FileWriter(arquivo);
+			new FileWriter(arquivo).close();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 
 		for (Serie serie : series) {
 			if (idSerie.equals(serie.getId())) {
-				serie.setNome(nomeNovo);
-				serie.setStatus(statusNovo);
-				serie.setTemporadas(temporadasNova);
-				serie.setEpisodios(episodiosNovo);
+				try {
+					serie = new Serie(nomeNovo, statusNovo, temporadasNova, episodiosNovo, idSerie);
+					adiciona(serie, false);
+					
+				} catch(InfoInvalidaException e) {
+					
+					try {
+						new FileWriter(arquivo).close();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					
+					for(Serie serie2 : series) {
+						adiciona(serie2, false);
+					}
+					
+					throw new RuntimeException(e);
+				}
+			} else {
+				adiciona(serie, false);
 			}
-			adiciona(serie, false);
 
+		}
+	}
+
+	public void deletar(String nome, Integer id) {
+		List<Serie> series = listar();
+		try {
+			new FileWriter(arquivo).close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
+		for (Serie serie : series) {
+			if (serie.getNome().equals(nome) && serie.getId().equals(id)) {} else {
+				adiciona(serie, false);
+			}
 		}
 	}
 }
