@@ -24,10 +24,10 @@ import java.awt.SystemColor;
 public class ViewMenuAdicionar {
 
 	private JFrame frmMenuAdicionar;
-	private JTextField CampoNome;
-	private JTextField CampoTemporadas;
-	private JTextField CampoEpisodios;
-	private JComboBox<String> statusComboBox;
+	private JTextField campoNome;
+	private JTextField campoTemporadas;
+	private JTextField campoEpisodios;
+	private JComboBox<String> comboBoxStatus;
 	private SeriesDAO seriesDAO = new SeriesDAO();
 
 	/**
@@ -72,106 +72,113 @@ public class ViewMenuAdicionar {
 		frmMenuAdicionar.getContentPane().setLayout(null);
 		frmMenuAdicionar.setLocation(600, 200);
 
-		JLabel TextoTitulo = new JLabel("ORGANIZADOR DE SÉRIES");
-		TextoTitulo.setForeground(Color.BLACK);
-		TextoTitulo.setBackground(Color.LIGHT_GRAY);
-		TextoTitulo.setFont(new Font("Arial", Font.BOLD, 30));
-		TextoTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		TextoTitulo.setBounds(6, 6, 612, 60);
-		frmMenuAdicionar.getContentPane().add(TextoTitulo);
+		JLabel textoTitulo = new JLabel("ORGANIZADOR DE SÉRIES");
+		textoTitulo.setForeground(Color.BLACK);
+		textoTitulo.setBackground(Color.LIGHT_GRAY);
+		textoTitulo.setFont(new Font("Arial", Font.BOLD, 30));
+		textoTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		textoTitulo.setBounds(126, 10, 393, 36);
+		frmMenuAdicionar.getContentPane().add(textoTitulo);
 
-		JLabel TextoNome = new JLabel("NOME");
-		TextoNome.setBackground(Color.LIGHT_GRAY);
-		TextoNome.setHorizontalAlignment(SwingConstants.LEFT);
-		TextoNome.setFont(new Font("Arial", Font.BOLD, 20));
-		TextoNome.setBounds(51, 92, 67, 24);
-		frmMenuAdicionar.getContentPane().add(TextoNome);
+		JLabel textoNome = new JLabel("NOME");
+		textoNome.setBackground(Color.LIGHT_GRAY);
+		textoNome.setHorizontalAlignment(SwingConstants.LEFT);
+		textoNome.setFont(new Font("Arial", Font.BOLD, 20));
+		textoNome.setBounds(51, 80, 60, 24);
+		frmMenuAdicionar.getContentPane().add(textoNome);
 
-		CampoNome = new JTextField();
-		CampoNome.setToolTipText("Digite o nome da série.");
-		CampoNome.setFont(new Font("Arial", Font.PLAIN, 20));
-		CampoNome.setBounds(51, 128, 454, 28);
-		CampoNome.setColumns(10);
-		frmMenuAdicionar.getContentPane().add(CampoNome);
+		campoNome = new JTextField();
+		campoNome.setBackground(Color.WHITE);
+		campoNome.setToolTipText("Digite o nome da série");
+		campoNome.setFont(new Font("Arial", Font.PLAIN, 18));
+		campoNome.setBounds(46, 110, 552, 36);
+		campoNome.setColumns(10);
+		frmMenuAdicionar.getContentPane().add(campoNome);
 
-		JLabel TextoTemporadas = new JLabel("TEMPORADAS");
-		TextoTemporadas.setHorizontalAlignment(SwingConstants.LEFT);
-		TextoTemporadas.setFont(new Font("Arial", Font.BOLD, 20));
-		TextoTemporadas.setBackground(Color.LIGHT_GRAY);
-		TextoTemporadas.setBounds(51, 178, 146, 24);
-		frmMenuAdicionar.getContentPane().add(TextoTemporadas);
+		JLabel textoTemporadas = new JLabel("TEMPORADAS");
+		textoTemporadas.setHorizontalAlignment(SwingConstants.LEFT);
+		textoTemporadas.setFont(new Font("Arial", Font.BOLD, 20));
+		textoTemporadas.setBackground(Color.LIGHT_GRAY);
+		textoTemporadas.setBounds(51, 160, 139, 24);
+		frmMenuAdicionar.getContentPane().add(textoTemporadas);
 
-		CampoTemporadas = new JTextField();
-		CampoTemporadas.setToolTipText("Digite o número de temporadas.");
-		CampoTemporadas.setFont(new Font("Arial", Font.PLAIN, 20));
-		CampoTemporadas.setBounds(51, 214, 454, 28);
-		frmMenuAdicionar.getContentPane().add(CampoTemporadas);
-		CampoTemporadas.setColumns(10);
+		campoTemporadas = new JTextField();
+		campoTemporadas.setBackground(Color.WHITE);
+		campoTemporadas.setToolTipText("Digite o número de temporadas");
+		campoTemporadas.setFont(new Font("Arial", Font.PLAIN, 18));
+		campoTemporadas.setBounds(46, 190, 552, 36);
+		frmMenuAdicionar.getContentPane().add(campoTemporadas);
+		campoTemporadas.setColumns(10);
 
-		JLabel TextoEpisodios = new JLabel("EPISÓDIOS");
-		TextoEpisodios.setHorizontalAlignment(SwingConstants.LEFT);
-		TextoEpisodios.setFont(new Font("Arial", Font.BOLD, 20));
-		TextoEpisodios.setBackground(Color.LIGHT_GRAY);
-		TextoEpisodios.setBounds(51, 254, 115, 24);
-		frmMenuAdicionar.getContentPane().add(TextoEpisodios);
+		JLabel textoEpisodios = new JLabel("EPISÓDIOS");
+		textoEpisodios.setHorizontalAlignment(SwingConstants.LEFT);
+		textoEpisodios.setFont(new Font("Arial", Font.BOLD, 20));
+		textoEpisodios.setBackground(Color.LIGHT_GRAY);
+		textoEpisodios.setBounds(51, 240, 108, 24);
+		frmMenuAdicionar.getContentPane().add(textoEpisodios);
 
-		CampoEpisodios = new JTextField();
-		CampoEpisodios.setToolTipText("Digite o número de episódios.");
-		CampoEpisodios.setFont(new Font("Arial", Font.PLAIN, 20));
-		CampoEpisodios.setBounds(51, 290, 454, 28);
-		frmMenuAdicionar.getContentPane().add(CampoEpisodios);
-		CampoEpisodios.setColumns(10);
+		campoEpisodios = new JTextField();
+		campoEpisodios.setBackground(Color.WHITE);
+		campoEpisodios.setToolTipText("Digite o número de episódios");
+		campoEpisodios.setFont(new Font("Arial", Font.PLAIN, 18));
+		campoEpisodios.setBounds(46, 270, 552, 36);
+		frmMenuAdicionar.getContentPane().add(campoEpisodios);
+		campoEpisodios.setColumns(10);
 
-		JButton BotaoAdicionar = new JButton("ADICIONAR SÉRIE");
-		BotaoAdicionar.setForeground(Color.BLACK);
-		BotaoAdicionar.setFont(new Font("Arial", Font.BOLD, 20));
-		BotaoAdicionar.setBounds(51, 425, 227, 34);
-		frmMenuAdicionar.getContentPane().add(BotaoAdicionar);
+		comboBoxStatus = new JComboBox<>();
+		comboBoxStatus.setBackground(Color.GRAY);
+		comboBoxStatus.setFont(new Font("Arial", Font.PLAIN, 18));
+		comboBoxStatus.addItem("ASSISTIDO");
+		comboBoxStatus.addItem("ASSISTIREI");
+		comboBoxStatus.addItem("ASSISTINDO");
+		comboBoxStatus.addItem("RETOMAREI");
+		
+				JLabel textoStatus = new JLabel("STATUS");
+				textoStatus.setHorizontalAlignment(SwingConstants.LEFT);
+				textoStatus.setFont(new Font("Arial", Font.BOLD, 20));
+				textoStatus.setBackground(Color.LIGHT_GRAY);
+				textoStatus.setBounds(51, 320, 79, 24);
+				frmMenuAdicionar.getContentPane().add(textoStatus);
+		comboBoxStatus.setToolTipText("Selecione o status");
+		comboBoxStatus.setBounds(46, 350, 552, 36);
+		frmMenuAdicionar.getContentPane().add(comboBoxStatus);
+		
+				JButton botaoAdicionar = new JButton("ADICIONAR SÉRIE");
+				botaoAdicionar.setBackground(Color.LIGHT_GRAY);
+				botaoAdicionar.setForeground(Color.BLACK);
+				botaoAdicionar.setFont(new Font("Arial", Font.BOLD, 20));
+				botaoAdicionar.setBounds(46, 420, 227, 36);
+				frmMenuAdicionar.getContentPane().add(botaoAdicionar);
+				
+						botaoAdicionar.addActionListener(new ActionListener() {
+				
+							public void actionPerformed(ActionEvent e) {
+								try {
+									if (seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios),
+											true)) {
+				
+										JOptionPane.showMessageDialog(null,
+												"A série " + "'" + campoNome.getText().strip() + "'" + " foi adicionada!",
+												"Série adicionada", JOptionPane.INFORMATION_MESSAGE);
+				
+										campoNome.setText(null);
+										campoTemporadas.setText(null);
+										campoEpisodios.setText(null);
+									}
+								} catch (InfoInvalidaException iIE) {
+				
+								}
+							}
+						});
 
-		statusComboBox = new JComboBox<>();
-		statusComboBox.addItem("ASSISTIDO");
-		statusComboBox.addItem("ASSISTIREI");
-		statusComboBox.addItem("ASSISTINDO");
-		statusComboBox.addItem("RETOMAREI");
-		statusComboBox.setToolTipText("Selecione o status");
-		statusComboBox.setBounds(51, 365, 454, 26);
-		frmMenuAdicionar.getContentPane().add(statusComboBox);
+		JButton botaoConsultar = new JButton("CONSULTAR SÉRIE");
+		botaoConsultar.setBackground(Color.LIGHT_GRAY);
+		botaoConsultar.setForeground(Color.BLACK);
+		botaoConsultar.setFont(new Font("Arial", Font.BOLD, 20));
+		botaoConsultar.setBounds(371, 420, 227, 36);
+		frmMenuAdicionar.getContentPane().add(botaoConsultar);
 
-		JLabel lblStatus = new JLabel("STATUS");
-		lblStatus.setHorizontalAlignment(SwingConstants.LEFT);
-		lblStatus.setFont(new Font("Arial", Font.BOLD, 20));
-		lblStatus.setBackground(Color.LIGHT_GRAY);
-		lblStatus.setBounds(51, 333, 115, 24);
-		frmMenuAdicionar.getContentPane().add(lblStatus);
-
-		JButton botaoConsultarSerie = new JButton("CONSULTAR SÉRIE");
-		botaoConsultarSerie.setForeground(Color.BLACK);
-		botaoConsultarSerie.setFont(new Font("Arial", Font.BOLD, 20));
-		botaoConsultarSerie.setBounds(376, 425, 227, 34);
-		frmMenuAdicionar.getContentPane().add(botaoConsultarSerie);
-
-		BotaoAdicionar.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				try {
-					if (seriesDAO.adiciona(new Serie(CampoNome, statusComboBox, CampoTemporadas, CampoEpisodios),
-							true)) {
-
-						JOptionPane.showMessageDialog(null,
-								"A série " + "'" + CampoNome.getText().strip() + "'" + " foi adicionada!",
-								"Série adicionada", JOptionPane.INFORMATION_MESSAGE);
-
-						CampoNome.setText(null);
-						CampoTemporadas.setText(null);
-						CampoEpisodios.setText(null);
-					}
-				} catch (InfoInvalidaException iIE) {
-
-				}
-			}
-		});
-
-		botaoConsultarSerie.addActionListener(new ActionListener() {
+		botaoConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ViewMenuConsultar.main(null);
 				frmMenuAdicionar.setVisible(false);
