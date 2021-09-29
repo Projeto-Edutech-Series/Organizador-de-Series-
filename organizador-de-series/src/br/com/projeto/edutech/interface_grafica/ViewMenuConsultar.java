@@ -151,7 +151,7 @@ public class ViewMenuConsultar {
 
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewMenuAdicionar.main(null);
+				MenuPrincipal.main(null);
 				frmMenuConsultar.setVisible(false);
 			}
 		});
