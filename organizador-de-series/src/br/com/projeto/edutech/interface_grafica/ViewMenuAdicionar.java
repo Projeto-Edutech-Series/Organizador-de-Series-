@@ -132,56 +132,56 @@ public class ViewMenuAdicionar {
 		comboBoxStatus.addItem("ASSISTIREI");
 		comboBoxStatus.addItem("ASSISTINDO");
 		comboBoxStatus.addItem("RETOMAREI");
-		
-				JLabel textoStatus = new JLabel("STATUS");
-				textoStatus.setHorizontalAlignment(SwingConstants.LEFT);
-				textoStatus.setFont(new Font("Arial", Font.BOLD, 20));
-				textoStatus.setBackground(Color.LIGHT_GRAY);
-				textoStatus.setBounds(51, 320, 79, 24);
-				frmMenuAdicionar.getContentPane().add(textoStatus);
+
+		JLabel textoStatus = new JLabel("STATUS");
+		textoStatus.setHorizontalAlignment(SwingConstants.LEFT);
+		textoStatus.setFont(new Font("Arial", Font.BOLD, 20));
+		textoStatus.setBackground(Color.LIGHT_GRAY);
+		textoStatus.setBounds(51, 320, 79, 24);
+		frmMenuAdicionar.getContentPane().add(textoStatus);
 		comboBoxStatus.setToolTipText("Selecione o status");
 		comboBoxStatus.setBounds(46, 350, 552, 36);
 		frmMenuAdicionar.getContentPane().add(comboBoxStatus);
+
+		JButton botaoAdicionar = new JButton("ADICIONAR SÉRIE");
+		botaoAdicionar.setBackground(Color.LIGHT_GRAY);
+		botaoAdicionar.setForeground(Color.BLACK);
+		botaoAdicionar.setFont(new Font("Arial", Font.BOLD, 20));
+		botaoAdicionar.setBounds(46, 420, 227, 36);
+		frmMenuAdicionar.getContentPane().add(botaoAdicionar);
+
+		JButton botaoVoltar = new JButton("VOLTAR");
+		botaoVoltar.setForeground(Color.BLACK);
+		botaoVoltar.setFont(new Font("Arial", Font.BOLD, 20));
+		botaoVoltar.setBackground(Color.LIGHT_GRAY);
+		botaoVoltar.setBounds(371, 420, 227, 36);
+		frmMenuAdicionar.getContentPane().add(botaoVoltar);
 		
-				JButton botaoAdicionar = new JButton("ADICIONAR SÉRIE");
-				botaoAdicionar.setBackground(Color.LIGHT_GRAY);
-				botaoAdicionar.setForeground(Color.BLACK);
-				botaoAdicionar.setFont(new Font("Arial", Font.BOLD, 20));
-				botaoAdicionar.setBounds(46, 420, 227, 36);
-				frmMenuAdicionar.getContentPane().add(botaoAdicionar);
-				
-						botaoAdicionar.addActionListener(new ActionListener() {
-				
-							public void actionPerformed(ActionEvent e) {
-								try {
-									if (seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios),
-											true)) {
-				
-										JOptionPane.showMessageDialog(null,
-												"A série " + "'" + campoNome.getText().strip() + "'" + " foi adicionada!",
-												"Série adicionada", JOptionPane.INFORMATION_MESSAGE);
-				
-										campoNome.setText(null);
-										campoTemporadas.setText(null);
-										campoEpisodios.setText(null);
-									}
-								} catch (InfoInvalidaException iIE) {
-				
-								}
-							}
-						});
-
-		JButton botaoConsultar = new JButton("CONSULTAR SÉRIE");
-		botaoConsultar.setBackground(Color.LIGHT_GRAY);
-		botaoConsultar.setForeground(Color.BLACK);
-		botaoConsultar.setFont(new Font("Arial", Font.BOLD, 20));
-		botaoConsultar.setBounds(371, 420, 227, 36);
-		frmMenuAdicionar.getContentPane().add(botaoConsultar);
-
-		botaoConsultar.addActionListener(new ActionListener() {
+		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewMenuConsultar.main(null);
+				MenuPrincipal.main(null);
 				frmMenuAdicionar.setVisible(false);
+			}
+		});
+
+		botaoAdicionar.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if (seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios),
+							true)) {
+
+						JOptionPane.showMessageDialog(null,
+								"A série " + "'" + campoNome.getText().strip() + "'" + " foi adicionada!",
+								"Série adicionada", JOptionPane.INFORMATION_MESSAGE);
+
+						campoNome.setText(null);
+						campoTemporadas.setText(null);
+						campoEpisodios.setText(null);
+					}
+				} catch (InfoInvalidaException iIE) {
+
+				}
 			}
 		});
 

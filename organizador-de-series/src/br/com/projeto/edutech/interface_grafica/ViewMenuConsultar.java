@@ -107,21 +107,21 @@ public class ViewMenuConsultar {
 		botaoVoltar.setBackground(Color.LIGHT_GRAY);
 		botaoVoltar.setForeground(Color.BLACK);
 		botaoVoltar.setFont(new Font("Arial", Font.BOLD, 20));
-		botaoVoltar.setBounds(209, 12, 227, 36);
+		botaoVoltar.setBounds(28, 429, 175, 36);
 		frmMenuConsultar.getContentPane().add(botaoVoltar);
 
 		botaoAlterar = new JButton("ALTERAR");
 		botaoAlterar.setBackground(Color.LIGHT_GRAY);
 		botaoAlterar.setForeground(Color.BLACK);
 		botaoAlterar.setFont(new Font("Arial", Font.BOLD, 20));
-		botaoAlterar.setBounds(378, 429, 227, 36);
+		botaoAlterar.setBounds(430, 429, 175, 36);
 		frmMenuConsultar.getContentPane().add(botaoAlterar);
 
 		botaoDeletar = new JButton("DELETAR");
 		botaoDeletar.setBackground(Color.LIGHT_GRAY);
 		botaoDeletar.setForeground(Color.BLACK);
 		botaoDeletar.setFont(new Font("Arial", Font.BOLD, 20));
-		botaoDeletar.setBounds(37, 429, 227, 36);
+		botaoDeletar.setBounds(231, 429, 175, 36);
 		frmMenuConsultar.getContentPane().add(botaoDeletar);
 
 		tabela = new JTable();
