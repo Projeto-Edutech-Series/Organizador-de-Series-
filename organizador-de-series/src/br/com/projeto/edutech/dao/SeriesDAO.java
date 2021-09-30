@@ -5,10 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import br.com.projeto.edutech.modelo.InfoInvalidaException;
 import br.com.projeto.edutech.modelo.Serie;
 
@@ -19,10 +20,18 @@ import br.com.projeto.edutech.modelo.Serie;
  */
 public class SeriesDAO {
 
-	private File arquivo = new File("series.csv");
+	private File arquivo = new File("C:\\ATDB\\series.csv");
 
 	public boolean adiciona(Serie serie, boolean append) {
-
+		
+		try {
+			if(!arquivo.exists()) {
+				Files.createDirectories(Paths.get("C:\\ATDB"));				
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		try (FileWriter writer = new FileWriter(arquivo, true)) {
 			try (PrintWriter saida = new PrintWriter(writer, true)) {
 				
