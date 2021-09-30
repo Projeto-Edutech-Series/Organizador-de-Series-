@@ -19,17 +19,11 @@ import br.com.projeto.edutech.modelo.Serie;
  * @author João Gabriel N Silva
  */
 public class SeriesDAO {
-	
-	private File arquivo = new File("C:\\ATDB\\series.csv");
+
+	private File arquivo = new File("C://ATDB//series.csv");
 
 	public boolean adiciona(Serie serie, boolean append) {
-		try {
-			if(!arquivo.exists()) {
-				Files.createDirectories(Paths.get("C:\\ATDB"));				
-			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+		pathBuilder();
 		try (FileWriter writer = new FileWriter(arquivo, true)) {
 			try (PrintWriter saida = new PrintWriter(writer, true)) {
 				Integer id;
@@ -39,8 +33,8 @@ public class SeriesDAO {
 				} else {
 					id = serie.getId();
 				}
-				saida.println(id + ";" + serie.getNome() + ";" + serie.getTemporadas() + ";"
-						+ serie.getEpisodios() + ";" + serie.getStatus().toUpperCase());
+				saida.println(id + ";" + serie.getNome() + ";" + serie.getTemporadas() + ";" + serie.getEpisodios() + ";"
+						+ serie.getStatus().toUpperCase());
 				return true;
 			}
 		} catch (IOException e) {
@@ -50,6 +44,7 @@ public class SeriesDAO {
 	}
 
 	public List<Serie> listar() {
+		pathBuilder();
 		List<Serie> lista = new ArrayList<>();
 
 		try {
@@ -95,19 +90,19 @@ public class SeriesDAO {
 				try {
 					serie = new Serie(nomeNovo, statusNovo, temporadasNova, episodiosNovo, idSerie);
 					adiciona(serie, false);
-					
-				} catch(InfoInvalidaException e) {
-					
+
+				} catch (InfoInvalidaException e) {
+
 					try {
 						new FileWriter(arquivo).close();
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
-					
-					for(Serie serie2 : series) {
+
+					for (Serie serie2 : series) {
 						adiciona(serie2, false);
 					}
-					
+
 					throw new RuntimeException(e);
 				}
 			} else {
@@ -126,9 +121,22 @@ public class SeriesDAO {
 		}
 
 		for (Serie serie : series) {
-			if (serie.getNome().equals(nome) && serie.getId().equals(id)) {} else {
+			if (serie.getNome().equals(nome) && serie.getId().equals(id)) {
+			} else {
 				adiciona(serie, false);
 			}
 		}
 	}
+
+	public void pathBuilder() {
+		try {
+			if (!arquivo.exists()) {
+				Files.createDirectories(Paths.get("C:\\ATDB"));
+				try (FileWriter writer = new FileWriter(arquivo, true)) {}
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
 }
