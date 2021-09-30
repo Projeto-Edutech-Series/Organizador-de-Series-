@@ -19,11 +19,10 @@ import br.com.projeto.edutech.modelo.Serie;
  * @author João Gabriel N Silva
  */
 public class SeriesDAO {
-
+	
 	private File arquivo = new File("C:\\ATDB\\series.csv");
 
 	public boolean adiciona(Serie serie, boolean append) {
-		
 		try {
 			if(!arquivo.exists()) {
 				Files.createDirectories(Paths.get("C:\\ATDB"));				
@@ -31,10 +30,8 @@ public class SeriesDAO {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
 		try (FileWriter writer = new FileWriter(arquivo, true)) {
 			try (PrintWriter saida = new PrintWriter(writer, true)) {
-				
 				Integer id;
 				if (append) {
 					id = Serie.ultimoID;
