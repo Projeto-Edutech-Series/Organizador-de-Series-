@@ -165,7 +165,7 @@ public class MenuConsultar {
 
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuAdicionar.main(null);
+				MenuPrincipal.main(null);
 				telaMenuConsultar.setVisible(false);
 			}
 		});
