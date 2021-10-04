@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import br.com.projeto.edutech.modelo.InfoInvalidaException;
@@ -120,10 +121,11 @@ public class SeriesDAO {
 			e1.printStackTrace();
 		}
 
+		Serie.ultimoID = 0;
 		for (Serie serie : series) {
 			if (serie.getNome().equals(nome) && serie.getId().equals(id)) {
 			} else {
-				adiciona(serie, false);
+				adiciona(serie, true);
 			}
 		}
 	}
@@ -137,6 +139,15 @@ public class SeriesDAO {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+	}
+	
+	public void setaUltimoId() {
+		List<Serie> lista = listar();
+		List<Integer> ids = new ArrayList<Integer>();
+		for(Serie serie : lista) {
+			ids.add(serie.getId());
+		}
+		Serie.ultimoID = Collections.max(ids) + 1;
 	}
 
 }

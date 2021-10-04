@@ -16,7 +16,7 @@ public class Serie {
 	private Integer temporadas;
 	private Integer episodios;
 	private Integer id;
-	public static Integer ultimoID = 0;
+	public static Integer ultimoID;
 
 	public Serie(JTextField nome, JComboBox<String> status, JTextField temporadas, JTextField episodios) {
 		verificaInformacoes(nome, status, temporadas, episodios);
