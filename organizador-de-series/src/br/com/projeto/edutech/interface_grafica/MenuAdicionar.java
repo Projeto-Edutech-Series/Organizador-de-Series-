@@ -102,7 +102,7 @@ public class MenuAdicionar {
 		campoNome.setColumns(10);
 		telaMenuAdicionar.getContentPane().add(campoNome);
 		//
-		
+
 		// texto temporadas
 		JLabel textoTemporadas = new JLabel("TEMPORADAS");
 		textoTemporadas.setHorizontalAlignment(SwingConstants.LEFT);
@@ -162,7 +162,7 @@ public class MenuAdicionar {
 		textoStatus.setBounds(36, 310, 79, 24);
 		telaMenuAdicionar.getContentPane().add(textoStatus);
 		//
-		
+
 		// botão adicionar
 		JButton botaoAdicionar = new JButton("ADICIONAR");
 		botaoAdicionar.setBackground(Color.LIGHT_GRAY);
@@ -180,7 +180,7 @@ public class MenuAdicionar {
 		botaoVoltar.setBounds(36, 400, 227, 36);
 		telaMenuAdicionar.getContentPane().add(botaoVoltar);
 		//
-		
+
 		// ação executada pelo botão voltar
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -189,29 +189,38 @@ public class MenuAdicionar {
 			}
 		});
 		//
-		
+
 		// ação executada pelo botão adicionar
 		botaoAdicionar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if (seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios),
-							true)) {
 
+					if (!seriesDAO.jaExiste(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios))) {
+
+						if (seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios),
+								true)) {
+
+							JOptionPane.showMessageDialog(null,
+									"A série " + "'" + campoNome.getText().strip() + "'" + " foi adicionada!",
+									"Série adicionada", JOptionPane.INFORMATION_MESSAGE);
+
+							campoNome.setText(null);
+							campoTemporadas.setText(null);
+							campoEpisodios.setText(null);
+						}
+
+					} else {
 						JOptionPane.showMessageDialog(null,
-								"A série " + "'" + campoNome.getText().strip() + "'" + " foi adicionada!",
-								"Série adicionada", JOptionPane.INFORMATION_MESSAGE);
-
-						campoNome.setText(null);
-						campoTemporadas.setText(null);
-						campoEpisodios.setText(null);
+								"A série " + "'" + campoNome.getText().strip() + "'" + " já esta no registro!");
 					}
+
 				} catch (InfoInvalidaException iIE) {
 
 				}
 			}
 		});
 		//
-		
+
 	}
 }

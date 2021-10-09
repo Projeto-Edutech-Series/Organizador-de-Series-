@@ -9,8 +9,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+
 import br.com.projeto.edutech.modelo.InfoInvalidaException;
 import br.com.projeto.edutech.modelo.Serie;
 
@@ -148,6 +150,10 @@ public class SeriesDAO {
 			ids.add(serie.getId());
 		}
 		Serie.ultimoID = Collections.max(ids) + 1;
+	}
+	
+	public boolean jaExiste(Serie serie) {
+		return new HashSet<Serie>(listar()).contains(serie);
 	}
 
 }

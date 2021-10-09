@@ -45,7 +45,7 @@ public class MenuPrincipal {
 	 * Create the application.
 	 */
 	public MenuPrincipal() {
-		this.serieDAO.setaUltimoId();
+		this.serieDAO.setUltimoId();
 		initialize();
 	}
 

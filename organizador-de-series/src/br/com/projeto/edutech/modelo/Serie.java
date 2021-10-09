@@ -21,9 +21,34 @@ public class Serie {
 	public Serie(JTextField nome, JComboBox<String> status, JTextField temporadas, JTextField episodios) {
 		verificaInformacoes(nome, status, temporadas, episodios);
 	}
-	
+
 	public Serie(String nome, String status, Integer temporadas, Integer episodios, Integer id) {
 		verificaInformacoes(nome, status, temporadas, episodios, id);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Serie other = (Serie) obj;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
 	}
 
 	public String getNome() {
@@ -41,7 +66,7 @@ public class Serie {
 	public Integer getEpisodios() {
 		return episodios;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -61,7 +86,8 @@ public class Serie {
 				this.temporadas = Integer.parseInt(campoTemporadas.getText().strip());
 			} catch (Exception e) {
 				campoTemporadas.setText("");
-				mostraMsg("O campo 'temporadas' deve conter um número", "Informação incorreta", JOptionPane.WARNING_MESSAGE);
+				mostraMsg("O campo 'temporadas' deve conter um número", "Informação incorreta",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		} else {
 			campoTemporadas.setText("");
@@ -73,7 +99,8 @@ public class Serie {
 				this.episodios = Integer.parseInt(campoEpisodios.getText().strip());
 			} catch (Exception e) {
 				campoEpisodios.setText("");
-				mostraMsg("O campo 'episódios' deve conter um número", "Informação incorreta", JOptionPane.WARNING_MESSAGE);
+				mostraMsg("O campo 'episódios' deve conter um número", "Informação incorreta",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		} else {
 			campoEpisodios.setText(null);
@@ -83,8 +110,8 @@ public class Serie {
 		this.status = campoStatus.getSelectedItem().toString();
 		campoStatus.setSelectedIndex(0);
 	}
-	
-	private void verificaInformacoes(String campoNome, String campoStatus, Integer campoTemporadas, 
+
+	private void verificaInformacoes(String campoNome, String campoStatus, Integer campoTemporadas,
 			Integer campoEpisodios, Integer id) {
 		if (!campoNome.strip().isEmpty()) {
 			this.nome = campoNome.strip();
@@ -97,7 +124,8 @@ public class Serie {
 			try {
 				this.temporadas = Integer.parseInt(campoTemporadas.toString().strip());
 			} catch (Exception e) {
-				mostraMsg("A coluna 'temporadas' deve conter um número", "Informação incorreta", JOptionPane.WARNING_MESSAGE);
+				mostraMsg("A coluna 'temporadas' deve conter um número", "Informação incorreta",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		} else {
 			mostraMsg("Número de temporadas não informado", "Informação não fornecida", JOptionPane.WARNING_MESSAGE);
@@ -107,7 +135,8 @@ public class Serie {
 			try {
 				this.episodios = Integer.parseInt(campoEpisodios.toString().strip());
 			} catch (Exception e) {
-				mostraMsg("A coluna 'episódios' deve conter um número", "Informação incorreta", JOptionPane.WARNING_MESSAGE);
+				mostraMsg("A coluna 'episódios' deve conter um número", "Informação incorreta",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		} else {
 			mostraMsg("Número de episódios não informado", "Informacão não fornecida", JOptionPane.WARNING_MESSAGE);
@@ -116,9 +145,9 @@ public class Serie {
 		if (!campoStatus.strip().isEmpty()) {
 			this.status = campoStatus.strip();
 		} else {
-			mostraMsg("Nenhum status informado", "Informação não fornecida",  JOptionPane.WARNING_MESSAGE);
+			mostraMsg("Nenhum status informado", "Informação não fornecida", JOptionPane.WARNING_MESSAGE);
 		}
-		
+
 		this.id = id;
 	}
 
