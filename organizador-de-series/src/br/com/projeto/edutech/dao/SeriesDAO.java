@@ -141,7 +141,7 @@ public class SeriesDAO {
 		}
 	}
 	
-	public void setaUltimoId() {
+	public void setUltimoId() {
 		List<Serie> lista = listar();
 		List<Integer> ids = new ArrayList<Integer>();
 		for(Serie serie : lista) {

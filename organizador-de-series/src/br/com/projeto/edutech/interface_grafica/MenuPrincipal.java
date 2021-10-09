@@ -53,53 +53,68 @@ public class MenuPrincipal {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		//cria o Jframe
 		telaMenuPrincipal = new JFrame();
+		telaMenuPrincipal.setResizable(false);
 		telaMenuPrincipal.setTitle("ORGANIZADOR DE SÉRIES");
 		telaMenuPrincipal.getContentPane().setBackground(SystemColor.inactiveCaption);
 		telaMenuPrincipal.setBounds(100, 100, 640, 320);
 		telaMenuPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		telaMenuPrincipal.getContentPane().setLayout(null);
 		telaMenuPrincipal.setLocation(600, 200);
+		//
 		
+		// texto de bem vindo
 		JLabel textoBemVindo = new JLabel("BEM VINDO");
 		textoBemVindo.setFont(new Font("Arial", Font.BOLD, 30));
 		textoBemVindo.setHorizontalAlignment(SwingConstants.CENTER);
 		textoBemVindo.setBounds(227, 10, 169, 36);
 		telaMenuPrincipal.getContentPane().add(textoBemVindo);
+		//
 		
+		// texto como deseja prosseguir
 		JLabel textoComoDesejaProsseguir = new JLabel("COMO DESEJA PROSSEGUIR ?");
 		textoComoDesejaProsseguir.setHorizontalAlignment(SwingConstants.CENTER);
 		textoComoDesejaProsseguir.setFont(new Font("Arial", Font.PLAIN, 30));
 		textoComoDesejaProsseguir.setBounds(87, 122, 449, 36);
 		telaMenuPrincipal.getContentPane().add(textoComoDesejaProsseguir);
+		//
 		
-		JButton botaoMenuAdicionar = new JButton("MENU ADICIONAR");
+		// botão menu adicionar série
+		JButton botaoMenuAdicionar = new JButton("ADICIONAR SÉRIE");
 		botaoMenuAdicionar.setForeground(Color.BLACK);
 		botaoMenuAdicionar.setFont(new Font("Arial", Font.BOLD, 20));
 		botaoMenuAdicionar.setBackground(Color.LIGHT_GRAY);
-		botaoMenuAdicionar.setBounds(36, 240, 227, 36);
+		botaoMenuAdicionar.setBounds(182, 185, 261, 36);
 		telaMenuPrincipal.getContentPane().add(botaoMenuAdicionar);
+		//
 		
-		JButton botaoMenuConsultar = new JButton("MENU CONSULTAR");
+		// botão menu consultar
+		JButton botaoMenuConsultar = new JButton("REGISTRO");
 		botaoMenuConsultar.setForeground(Color.BLACK);
 		botaoMenuConsultar.setFont(new Font("Arial", Font.BOLD, 20));
 		botaoMenuConsultar.setBackground(Color.LIGHT_GRAY);
-		botaoMenuConsultar.setBounds(361, 240, 227, 36);
+		botaoMenuConsultar.setBounds(182, 235, 261, 36);
 		telaMenuPrincipal.getContentPane().add(botaoMenuConsultar);
+		//
 		
+		// ação executada pelo botão adicionar série
 		botaoMenuAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuAdicionar.main(null);
 				telaMenuPrincipal.setVisible(false);
 			}
 		});
+		//
 		
+		// ação executada pelo botão registro
 		botaoMenuConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuConsultar.main(null);
 				telaMenuPrincipal.setVisible(false);
 			}
 		});
+		//
 		
 		
 		

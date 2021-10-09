@@ -62,6 +62,7 @@ public class MenuConsultar {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		// cria o JFrame
 		telaMenuConsultar = new JFrame();
 		telaMenuConsultar.setFont(new Font("Arial", Font.BOLD, 12));
 		telaMenuConsultar.setTitle("ORGANIZADOR DE SÉRIES");
@@ -72,88 +73,104 @@ public class MenuConsultar {
 		telaMenuConsultar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		telaMenuConsultar.setLocation(600, 200);
 		telaMenuConsultar.getContentPane().setLayout(null);
+		//
+		
+		// texto registro de séries
+		JLabel textoConsultarSries = new JLabel("REGISTRO DE SÉRIES");
+		textoConsultarSries.setHorizontalAlignment(SwingConstants.CENTER);
+		textoConsultarSries.setForeground(Color.BLACK);
+		textoConsultarSries.setFont(new Font("Arial", Font.BOLD, 30));
+		textoConsultarSries.setBackground(Color.LIGHT_GRAY);
+		textoConsultarSries.setBounds(118, 6, 393, 36);
+		telaMenuConsultar.getContentPane().add(textoConsultarSries);
+		//
 
+		// texto ID
 		JLabel textoId = new JLabel("ID");
 		textoId.setFont(new Font("Arial", Font.BOLD, 15));
 		textoId.setHorizontalAlignment(SwingConstants.LEFT);
 		textoId.setBounds(18, 70, 15, 18);
 		telaMenuConsultar.getContentPane().add(textoId);
-
+		//
+		
+		// texto nome
 		JLabel textoNome = new JLabel("NOME");
 		textoNome.setHorizontalAlignment(SwingConstants.CENTER);
 		textoNome.setFont(new Font("Arial", Font.BOLD, 15));
 		textoNome.setBounds(136, 70, 46, 18);
 		telaMenuConsultar.getContentPane().add(textoNome);
-
+		//
+		
+		// texto status
 		JLabel textoStatus = new JLabel("STATUS");
 		textoStatus.setHorizontalAlignment(SwingConstants.CENTER);
 		textoStatus.setFont(new Font("Arial", Font.BOLD, 15));
 		textoStatus.setBounds(256, 70, 60, 18);
 		telaMenuConsultar.getContentPane().add(textoStatus);
+		//
 
+		// texto temporadas
 		JLabel textoTemporadas = new JLabel("TEMPORADAS");
 		textoTemporadas.setHorizontalAlignment(SwingConstants.CENTER);
 		textoTemporadas.setFont(new Font("Arial", Font.BOLD, 15));
 		textoTemporadas.setBounds(374, 70, 105, 18);
 		telaMenuConsultar.getContentPane().add(textoTemporadas);
-
+		//
+		
+		// texto episodios
 		JLabel textoEpisodios = new JLabel("EPISÓDIOS");
 		textoEpisodios.setHorizontalAlignment(SwingConstants.CENTER);
 		textoEpisodios.setFont(new Font("Arial", Font.BOLD, 15));
 		textoEpisodios.setBounds(496, 70, 83, 18);
 		telaMenuConsultar.getContentPane().add(textoEpisodios);
-
+		//
+		
+		// botão voltar
 		JButton botaoVoltar = new JButton("VOLTAR");
 		botaoVoltar.setBackground(Color.LIGHT_GRAY);
 		botaoVoltar.setForeground(Color.BLACK);
 		botaoVoltar.setFont(new Font("Arial", Font.BOLD, 20));
 		botaoVoltar.setBounds(12, 400, 175, 36);
 		telaMenuConsultar.getContentPane().add(botaoVoltar);
-
+		//
+		
+		// botão alterar
 		botaoAlterar = new JButton("ALTERAR");
 		botaoAlterar.setBackground(Color.LIGHT_GRAY);
 		botaoAlterar.setForeground(Color.BLACK);
 		botaoAlterar.setFont(new Font("Arial", Font.BOLD, 20));
 		botaoAlterar.setBounds(437, 400, 175, 36);
 		telaMenuConsultar.getContentPane().add(botaoAlterar);
+		//
 
+		// botão deletar
 		botaoDeletar = new JButton("DELETAR");
 		botaoDeletar.setBackground(Color.LIGHT_GRAY);
 		botaoDeletar.setForeground(Color.BLACK);
 		botaoDeletar.setFont(new Font("Arial", Font.BOLD, 20));
 		botaoDeletar.setBounds(224, 400, 175, 36);
 		telaMenuConsultar.getContentPane().add(botaoDeletar);
+		//
 
+		// tabela
 		tabelaSeries = new JTable();
-		tabelaSeries.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-			}
-		));
 		tabelaSeries.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 255, 255), new Color(0, 0, 0)));
 		tabelaSeries.setFont(new Font("SansSerif", Font.PLAIN, 13));
 		tabelaSeries.setBackground(SystemColor.inactiveCaptionBorder);
+		tabelaSeries.setBounds(12, 88, 600, 300);
+		telaMenuConsultar.getContentPane().add(tabelaSeries);
+		//
+		
+		// modelo tabela
 		modelo = (DefaultTableModel) tabelaSeries.getModel();
-
 		modelo.addColumn("ID");
 		modelo.addColumn("NOME");
 		modelo.addColumn("STATUS");
 		modelo.addColumn("TEMPORADAS");
 		modelo.addColumn("EPISODIOS");
+		//
 
 		preencherTabela();
-
-		tabelaSeries.setBounds(12, 88, 600, 300);
-		telaMenuConsultar.getContentPane().add(tabelaSeries);
-		
-		JLabel textoConsultarSries = new JLabel("CONSULTAR SÉRIES");
-		textoConsultarSries.setHorizontalAlignment(SwingConstants.CENTER);
-		textoConsultarSries.setForeground(Color.BLACK);
-		textoConsultarSries.setFont(new Font("Arial", Font.BOLD, 30));
-		textoConsultarSries.setBackground(Color.LIGHT_GRAY);
-		textoConsultarSries.setBounds(159, 10, 306, 36);
-		telaMenuConsultar.getContentPane().add(textoConsultarSries);
 
 		botaoAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
