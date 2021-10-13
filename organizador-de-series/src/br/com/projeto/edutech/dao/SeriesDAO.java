@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import br.com.projeto.edutech.modelo.InfoInvalidaException;
@@ -149,7 +150,11 @@ public class SeriesDAO {
 		for(Serie serie : lista) {
 			ids.add(serie.getId());
 		}
-		Serie.ultimoID = Collections.max(ids) + 1;
+		try {
+			Serie.ultimoID = Collections.max(ids) + 1;
+		} catch(NoSuchElementException ex) {
+			
+		}
 	}
 	
 	public boolean jaExiste(Serie serie) {
