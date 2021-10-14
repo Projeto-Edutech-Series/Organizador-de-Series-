@@ -6,7 +6,9 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collection;
 import java.util.List;
+import java.util.TreeSet;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,12 +16,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
 import br.com.projeto.edutech.dao.SeriesDAO;
 import br.com.projeto.edutech.modelo.Serie;
-import javax.swing.UIManager;
 
 public class MenuConsultar {
 
@@ -198,8 +200,7 @@ public class MenuConsultar {
 	}
 
 	private void preencherTabela() {
-		List<Serie> series = serieDAO.listar();
-
+		Collection<Serie> series = new TreeSet<Serie>(serieDAO.listar());   
 		try {
 			for (Serie serie : series) {
 				modelo.addRow(new Object[] { serie.getId(), serie.getNome(), serie.getStatus(), serie.getTemporadas(),
