@@ -284,6 +284,14 @@ public class MenuConsultar {
 	}
 
 	private void limparTabela() {
+		List<Serie> series = serieDAO.listar();
+		try {
+			for (Serie serie : series) {
+				modelo.addRow(new Object[] {"","","","","" });
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 		modelo.getDataVector().clear();
 	}
 }
