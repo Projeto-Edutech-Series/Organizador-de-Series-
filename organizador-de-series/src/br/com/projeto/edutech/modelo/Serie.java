@@ -9,7 +9,7 @@ import javax.swing.JTextField;
  * 
  * @author João Gabriel N Silva
  */
-public class Serie {
+public class Serie implements Comparable<Serie> {
 
 	private String nome;
 	private String status;
@@ -155,4 +155,11 @@ public class Serie {
 		JOptionPane.showMessageDialog(null, msg, titulo, msgTipo);
 		throw new InfoInvalidaException();
 	}
+
+	@Override
+	public int compareTo(Serie serie) {
+		return this.nome.compareTo(serie.nome);
+	}
+	
+
 }
