@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -87,46 +88,6 @@ public class MenuConsultar {
 		telaMenuConsultar.getContentPane().add(textoConsultarSries);
 		//
 
-		// texto ID
-		JLabel textoId = new JLabel("ID");
-		textoId.setFont(new Font("Arial", Font.BOLD, 15));
-		textoId.setHorizontalAlignment(SwingConstants.LEFT);
-		textoId.setBounds(18, 70, 15, 18);
-		telaMenuConsultar.getContentPane().add(textoId);
-		//
-		
-		// texto nome
-		JLabel textoNome = new JLabel("NOME");
-		textoNome.setHorizontalAlignment(SwingConstants.CENTER);
-		textoNome.setFont(new Font("Arial", Font.BOLD, 15));
-		textoNome.setBounds(136, 70, 46, 18);
-		telaMenuConsultar.getContentPane().add(textoNome);
-		//
-		
-		// texto status
-		JLabel textoStatus = new JLabel("STATUS");
-		textoStatus.setHorizontalAlignment(SwingConstants.CENTER);
-		textoStatus.setFont(new Font("Arial", Font.BOLD, 15));
-		textoStatus.setBounds(256, 70, 60, 18);
-		telaMenuConsultar.getContentPane().add(textoStatus);
-		//
-
-		// texto temporadas
-		JLabel textoTemporadas = new JLabel("TEMPORADAS");
-		textoTemporadas.setHorizontalAlignment(SwingConstants.CENTER);
-		textoTemporadas.setFont(new Font("Arial", Font.BOLD, 15));
-		textoTemporadas.setBounds(374, 70, 105, 18);
-		telaMenuConsultar.getContentPane().add(textoTemporadas);
-		//
-		
-		// texto episodios
-		JLabel textoEpisodios = new JLabel("EPISÓDIOS");
-		textoEpisodios.setHorizontalAlignment(SwingConstants.CENTER);
-		textoEpisodios.setFont(new Font("Arial", Font.BOLD, 15));
-		textoEpisodios.setBounds(496, 70, 83, 18);
-		telaMenuConsultar.getContentPane().add(textoEpisodios);
-		//
-		
 		// botão voltar
 		JButton botaoVoltar = new JButton("VOLTAR");
 		botaoVoltar.setBackground(Color.LIGHT_GRAY);
@@ -153,14 +114,22 @@ public class MenuConsultar {
 		botaoDeletar.setBounds(224, 400, 175, 36);
 		telaMenuConsultar.getContentPane().add(botaoDeletar);
 		//
+		
+		// Scroll pane
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 88, 600, 300);
+		telaMenuConsultar.getContentPane().add(scrollPane);
+		//
 
 		// tabela
 		tabelaSeries = new JTable();
+		scrollPane.setViewportView(tabelaSeries);
+		tabelaSeries.setCellSelectionEnabled(true);
+		tabelaSeries.setShowVerticalLines(true);
+		tabelaSeries.setShowHorizontalLines(true);
 		tabelaSeries.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 255, 255), new Color(0, 0, 0)));
 		tabelaSeries.setFont(new Font("SansSerif", Font.PLAIN, 13));
 		tabelaSeries.setBackground(SystemColor.inactiveCaptionBorder);
-		tabelaSeries.setBounds(12, 88, 600, 300);
-		telaMenuConsultar.getContentPane().add(tabelaSeries);
 		//
 		
 		// modelo tabela

@@ -68,7 +68,7 @@ public class MenuPrincipal {
 		JLabel textoBemVindo = new JLabel("BEM VINDO");
 		textoBemVindo.setFont(new Font("Arial", Font.BOLD, 30));
 		textoBemVindo.setHorizontalAlignment(SwingConstants.CENTER);
-		textoBemVindo.setBounds(227, 10, 169, 36);
+		textoBemVindo.setBounds(232, 10, 169, 36);
 		telaMenuPrincipal.getContentPane().add(textoBemVindo);
 		//
 		
@@ -85,7 +85,7 @@ public class MenuPrincipal {
 		botaoMenuAdicionar.setForeground(Color.BLACK);
 		botaoMenuAdicionar.setFont(new Font("Arial", Font.BOLD, 20));
 		botaoMenuAdicionar.setBackground(Color.LIGHT_GRAY);
-		botaoMenuAdicionar.setBounds(182, 185, 261, 36);
+		botaoMenuAdicionar.setBounds(186, 185, 261, 36);
 		telaMenuPrincipal.getContentPane().add(botaoMenuAdicionar);
 		//
 		
@@ -94,7 +94,7 @@ public class MenuPrincipal {
 		botaoMenuConsultar.setForeground(Color.BLACK);
 		botaoMenuConsultar.setFont(new Font("Arial", Font.BOLD, 20));
 		botaoMenuConsultar.setBackground(Color.LIGHT_GRAY);
-		botaoMenuConsultar.setBounds(182, 235, 261, 36);
+		botaoMenuConsultar.setBounds(186, 235, 261, 36);
 		telaMenuPrincipal.getContentPane().add(botaoMenuConsultar);
 		//
 		
