@@ -35,7 +35,7 @@ public class MenuAdicionar {
 	 */
 	public static void main(String[] args) {
 		try {
-			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+			UIManager.setLookAndFeel("com.formdev.flatlaf.FlatIntelliJLaf");
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -66,7 +66,7 @@ public class MenuAdicionar {
 		telaMenuAdicionar = new JFrame();
 		telaMenuAdicionar.setResizable(false);
 		telaMenuAdicionar.setBackground(SystemColor.desktop);
-		telaMenuAdicionar.getContentPane().setBackground(SystemColor.inactiveCaption);
+		telaMenuAdicionar.getContentPane().setBackground(new Color(220, 220, 220));
 		telaMenuAdicionar.setTitle("ORGANIZADOR DE SÉRIES");
 		telaMenuAdicionar.setBounds(100, 100, 640, 480);
 		telaMenuAdicionar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

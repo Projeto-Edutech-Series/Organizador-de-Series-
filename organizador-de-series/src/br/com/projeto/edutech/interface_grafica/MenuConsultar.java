@@ -38,7 +38,7 @@ public class MenuConsultar {
 	 */
 	public static void main(String[] args) {
 		try {
-			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+			UIManager.setLookAndFeel("com.formdev.flatlaf.FlatIntelliJLaf");
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -71,7 +71,7 @@ public class MenuConsultar {
 		telaMenuConsultar.setTitle("ORGANIZADOR DE SÉRIES");
 		telaMenuConsultar.setResizable(false);
 		telaMenuConsultar.getContentPane().setFont(new Font("SansSerif", Font.PLAIN, 12));
-		telaMenuConsultar.getContentPane().setBackground(SystemColor.inactiveCaption);
+		telaMenuConsultar.getContentPane().setBackground(new Color(220, 220, 220));
 		telaMenuConsultar.setBounds(100, 100, 640, 480);
 		telaMenuConsultar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		telaMenuConsultar.setLocation(600, 200);

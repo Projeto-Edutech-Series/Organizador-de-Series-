@@ -25,7 +25,7 @@ public class MenuPrincipal {
 	 */
 	public static void main(String[] args) {
 		try {
-			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+			UIManager.setLookAndFeel("com.formdev.flatlaf.FlatIntelliJLaf");
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -57,7 +57,7 @@ public class MenuPrincipal {
 		telaMenuPrincipal = new JFrame();
 		telaMenuPrincipal.setResizable(false);
 		telaMenuPrincipal.setTitle("ORGANIZADOR DE SÉRIES");
-		telaMenuPrincipal.getContentPane().setBackground(SystemColor.inactiveCaption);
+		telaMenuPrincipal.getContentPane().setBackground(new Color(220, 220, 220));
 		telaMenuPrincipal.setBounds(100, 100, 640, 320);
 		telaMenuPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		telaMenuPrincipal.getContentPane().setLayout(null);
