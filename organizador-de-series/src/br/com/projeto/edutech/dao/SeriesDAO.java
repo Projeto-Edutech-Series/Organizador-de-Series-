@@ -30,14 +30,7 @@ public class SeriesDAO {
 		pathBuilder();
 		try (FileWriter writer = new FileWriter(arquivo, true)) {
 			try (PrintWriter saida = new PrintWriter(writer, true)) {
-				Integer id;
-				if (append) {
-					id = Serie.ultimoID;
-					Serie.ultimoID++;
-				} else {
-					id = serie.getId();
-				}
-				saida.println(id + ";" + serie.getNome() + ";" + serie.getTemporadas() + ";" + serie.getEpisodios() + ";"
+				saida.println(serie.getNome() + ";" + serie.getTemporadas() + ";" + serie.getEpisodios() + ";"
 						+ serie.getStatus().toUpperCase());
 				return true;
 			}
@@ -61,13 +54,12 @@ public class SeriesDAO {
 				Scanner linhaScanner = new Scanner(linha);
 				linhaScanner.useDelimiter(";");
 
-				String id = linhaScanner.next();
 				String nomeSerie = linhaScanner.next();
 				Integer temporadas = linhaScanner.nextInt();
 				Integer episodios = linhaScanner.nextInt();
 				String status = linhaScanner.next();
 
-				lista.add(new Serie(nomeSerie, status, temporadas, episodios, Integer.parseInt(id)));
+				lista.add(new Serie(nomeSerie, status, temporadas, episodios));
 
 				linhaScanner.close();
 			}
@@ -80,7 +72,7 @@ public class SeriesDAO {
 		return lista;
 	}
 
-	public void alterar(Integer idSerie, String nomeNovo, String statusNovo, Integer temporadasNova,
+	public void alterar(String nomeNovo, String statusNovo, Integer temporadasNova,
 			Integer episodiosNovo) {
 		List<Serie> series = listar();
 		try {
@@ -90,9 +82,9 @@ public class SeriesDAO {
 		}
 
 		for (Serie serie : series) {
-			if (idSerie.equals(serie.getId())) {
+//			if (idSerie.equals(serie.getId())) {
 				try {
-					serie = new Serie(nomeNovo, statusNovo, temporadasNova, episodiosNovo, idSerie);
+//					serie = new Serie(nomeNovo, statusNovo, temporadasNova, episodiosNovo, idSerie);
 					adiciona(serie, false);
 
 				} catch (InfoInvalidaException e) {
@@ -109,14 +101,14 @@ public class SeriesDAO {
 
 					throw new RuntimeException(e);
 				}
-			} else {
+//			} else {
 				adiciona(serie, false);
 			}
 
 		}
-	}
+//	}
 
-	public void deletar(String nome, Integer id) {
+	public void deletar(String nome) {
 		List<Serie> series = listar();
 		try {
 			new FileWriter(arquivo).close();
@@ -124,9 +116,8 @@ public class SeriesDAO {
 			e1.printStackTrace();
 		}
 
-		Serie.ultimoID = 0;
 		for (Serie serie : series) {
-			if (serie.getNome().equals(nome) && serie.getId().equals(id)) {
+			if (serie.getNome().equals(nome)) {
 			} else {
 				adiciona(serie, true);
 			}
@@ -141,19 +132,6 @@ public class SeriesDAO {
 			}
 		} catch (IOException e1) {
 			e1.printStackTrace();
-		}
-	}
-	
-	public void setUltimoId() {
-		List<Serie> lista = listar();
-		List<Integer> ids = new ArrayList<Integer>();
-		for(Serie serie : lista) {
-			ids.add(serie.getId());
-		}
-		try {
-			Serie.ultimoID = Collections.max(ids) + 1;
-		} catch(NoSuchElementException ex) {
-			
 		}
 	}
 	
