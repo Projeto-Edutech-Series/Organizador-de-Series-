@@ -15,15 +15,13 @@ public class Serie implements Comparable<Serie> {
 	private String status;
 	private Integer temporadas;
 	private Integer episodios;
-	private Integer id;
-	public static Integer ultimoID = 0;
 
 	public Serie(JTextField nome, JComboBox<String> status, JTextField temporadas, JTextField episodios) {
 		verificaInformacoes(nome, status, temporadas, episodios);
 	}
 
-	public Serie(String nome, String status, Integer temporadas, Integer episodios, Integer id) {
-		verificaInformacoes(nome, status, temporadas, episodios, id);
+	public Serie(String nome, String status, Integer temporadas, Integer episodios) {
+		verificaInformacoes(nome, status, temporadas, episodios);
 	}
 
 	@Override
@@ -67,10 +65,6 @@ public class Serie implements Comparable<Serie> {
 		return episodios;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
 	private void verificaInformacoes(JTextField campoNome, JComboBox<String> campoStatus, JTextField campoTemporadas,
 			JTextField campoEpisodios) {
 		if (!campoNome.getText().strip().isEmpty()) {
@@ -112,7 +106,7 @@ public class Serie implements Comparable<Serie> {
 	}
 
 	private void verificaInformacoes(String campoNome, String campoStatus, Integer campoTemporadas,
-			Integer campoEpisodios, Integer id) {
+			Integer campoEpisodios) {
 		if (!campoNome.strip().isEmpty()) {
 			this.nome = campoNome.strip();
 
@@ -147,8 +141,6 @@ public class Serie implements Comparable<Serie> {
 		} else {
 			mostraMsg("Nenhum status informado", "Informação não fornecida", JOptionPane.WARNING_MESSAGE);
 		}
-
-		this.id = id;
 	}
 
 	private void mostraMsg(String msg, String titulo, Integer msgTipo) {
