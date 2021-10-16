@@ -77,7 +77,7 @@ public class MenuConsultar {
 		telaMenuConsultar.setLocation(600, 200);
 		telaMenuConsultar.getContentPane().setLayout(null);
 		//
-		
+
 		// texto registro de séries
 		JLabel textoConsultarSries = new JLabel("REGISTRO DE SÉRIES");
 		textoConsultarSries.setHorizontalAlignment(SwingConstants.CENTER);
@@ -96,7 +96,7 @@ public class MenuConsultar {
 		botaoVoltar.setBounds(12, 400, 175, 36);
 		telaMenuConsultar.getContentPane().add(botaoVoltar);
 		//
-		
+
 		// botão alterar
 		botaoAlterar = new JButton("ALTERAR");
 		botaoAlterar.setBackground(Color.LIGHT_GRAY);
@@ -114,7 +114,7 @@ public class MenuConsultar {
 		botaoDeletar.setBounds(224, 400, 175, 36);
 		telaMenuConsultar.getContentPane().add(botaoDeletar);
 		//
-		
+
 		// Scroll pane
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 88, 600, 300);
@@ -131,10 +131,9 @@ public class MenuConsultar {
 		tabelaSeries.setFont(new Font("SansSerif", Font.PLAIN, 13));
 		tabelaSeries.setBackground(SystemColor.inactiveCaptionBorder);
 		//
-		
+
 		// modelo tabela
 		modelo = (DefaultTableModel) tabelaSeries.getModel();
-		modelo.addColumn("ID");
 		modelo.addColumn("NOME");
 		modelo.addColumn("STATUS");
 		modelo.addColumn("TEMPORADAS");
@@ -145,9 +144,32 @@ public class MenuConsultar {
 
 		botaoAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				alterar();
-				limparTabela();
-				preencherTabela();
+
+				Object objetoDaLinha = modelo.getValueAt(tabelaSeries.getSelectedRow(), tabelaSeries.getSelectedColumn());
+				String nomeColuna = tabelaSeries.getColumnName(tabelaSeries.getSelectedColumn());
+
+				String nome = (String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 0);
+				String status = (String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 1);
+				Integer temporadas;
+				Integer episodios;
+
+				try {
+					temporadas = (Integer) modelo.getValueAt(tabelaSeries.getSelectedRow(), 2);
+					try {
+						episodios = (Integer) modelo.getValueAt(tabelaSeries.getSelectedRow(), 3);
+					} catch (ClassCastException ex1) {
+						episodios = Integer.parseInt((String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 3));
+					}
+				} catch (ClassCastException ex2) {
+					temporadas = Integer.parseInt((String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 2));
+					try {
+						episodios = (Integer) modelo.getValueAt(tabelaSeries.getSelectedRow(), 3);
+					} catch (ClassCastException ex1) {
+						episodios = Integer.parseInt((String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 3));
+					}
+				}
+				new MenuAlterar(nome, status, "" + temporadas, "" + episodios).main(null);
+				telaMenuConsultar.setVisible(false);
 			}
 		});
 
@@ -168,12 +190,12 @@ public class MenuConsultar {
 
 	}
 
+
 	private void preencherTabela() {
-		Collection<Serie> series = new TreeSet<Serie>(serieDAO.listar());   
+		Collection<Serie> series = new TreeSet<Serie>(serieDAO.listar());
 		try {
 			for (Serie serie : series) {
-				modelo.addRow(new Object[] { serie.getId(), serie.getNome(), serie.getStatus(), serie.getTemporadas(),
-						serie.getEpisodios() });
+				modelo.addRow(new Object[] { serie.getNome(), serie.getStatus(), serie.getTemporadas(), serie.getEpisodios() });
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -184,12 +206,11 @@ public class MenuConsultar {
 		try {
 			Object objetoDaLinha = modelo.getValueAt(tabelaSeries.getSelectedRow(), tabelaSeries.getSelectedColumn());
 			String nomeColuna = tabelaSeries.getColumnName(tabelaSeries.getSelectedColumn());
-			
+
 			if (objetoDaLinha instanceof String && nomeColuna.equals("NOME")) {
-				Integer id = (Integer) modelo.getValueAt(tabelaSeries.getSelectedRow(), 0);
 				String nome = (String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 1);
-				
-				this.serieDAO.deletar(nome, id);
+
+				this.serieDAO.deletar(nome);
 				JOptionPane.showMessageDialog(null, "Deletado com sucesso", "Alteração bem sucedida",
 						JOptionPane.INFORMATION_MESSAGE);
 			} else {
@@ -201,63 +222,13 @@ public class MenuConsultar {
 		}
 	}
 
-	private void alterar() {
-
-		try {
-			Object objetoDaLinha = modelo.getValueAt(tabelaSeries.getSelectedRow(), tabelaSeries.getSelectedColumn());
-			String nomeColuna = tabelaSeries.getColumnName(tabelaSeries.getSelectedColumn());
-
-			if (objetoDaLinha instanceof Integer && nomeColuna.equals("ID")) {
-
-				Integer id = (Integer) objetoDaLinha;
-				String nome = (String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 1);
-				String status = (String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 2);
-				Integer temporadas;
-				Integer episodios;
-
-				try {
-					try {
-						temporadas = (Integer) modelo.getValueAt(tabelaSeries.getSelectedRow(), 3);
-						try {
-							episodios = (Integer) modelo.getValueAt(tabelaSeries.getSelectedRow(), 4);
-						} catch (ClassCastException ex1) {
-							episodios = Integer.parseInt((String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 4));
-						}
-					} catch (ClassCastException ex2) {
-						temporadas = Integer.parseInt((String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 3));
-						try {
-							episodios = (Integer) modelo.getValueAt(tabelaSeries.getSelectedRow(), 4);
-						} catch (ClassCastException ex1) {
-							episodios = Integer.parseInt((String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 4));
-						}
-					}
-					try {
-						this.serieDAO.alterar(id, nome, status, temporadas, episodios);
-						JOptionPane.showMessageDialog(null, "Alterado com sucesso", "Alteração bem sucedida",
-								JOptionPane.INFORMATION_MESSAGE);
-					} catch (RuntimeException exx) {
-						tabelaSeries.clearSelection();
-					}
-				} catch (NumberFormatException exc) {
-					JOptionPane.showMessageDialog(null, "Informe apenas números", "Informação incorreta",
-							JOptionPane.WARNING_MESSAGE);
-				}
-
-			} else {
-				JOptionPane.showMessageDialog(null, "Por favor, selecionar o ID", "ID não selecionado",
-						JOptionPane.WARNING_MESSAGE);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	private void limparTabela() {
 		List<Serie> series = serieDAO.listar();
 		try {
+			modelo.addRow(new Object[] { "", "", "", "", "" });
 			for (Serie serie : series) {
-				modelo.addRow(new Object[] {"","","","","" });
+				modelo.addRow(new Object[] { "", "", "", "", "" });
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
