@@ -113,7 +113,7 @@ public class MenuAlterar {
 		//
 
 		// botão alterar
-		botaoAlterar = new JButton("ALTERAR");
+		botaoAlterar = new JButton("SALVAR");
 		botaoAlterar.setBackground(Color.LIGHT_GRAY);
 		botaoAlterar.setForeground(Color.BLACK);
 		botaoAlterar.setFont(new Font("Arial", Font.BOLD, 20));
@@ -180,33 +180,21 @@ public class MenuAlterar {
 						episodios = Integer.parseInt((String) modelo.getValueAt(0, 3));
 					}
 				}
-				
+
 				try {
-					if (!seriesDAO.jaExiste(new Serie(nome, status, temporadas, episodios))) {
+					seriesDAO.deletar(nomeAntigo);
+					seriesDAO.adiciona(new Serie(nome, status, temporadas, episodios), true);
 
-						if (seriesDAO.adiciona(new Serie(nome, status, temporadas, episodios),
-								true)) {
-							
-							seriesDAO.deletar(nomeAntigo);
+					JOptionPane.showMessageDialog(null, "A série " + "'" + nome.strip() + "'" + " foi adicionada!",
+							"Série adicionada", JOptionPane.INFORMATION_MESSAGE);
 
-							JOptionPane.showMessageDialog(null,
-									"A série " + "'" + nome.strip() + "'" + " foi adicionada!",
-									"Série adicionada", JOptionPane.INFORMATION_MESSAGE);
-							
-							MenuConsultar.main(null);
-							telaMenuAlterar.setVisible(false);
-							
-						}
-
-					} else {
-						JOptionPane.showMessageDialog(null,
-								"A série " + "'" + nome.strip() + "'" + " já esta no registro!");
-					}
+					MenuConsultar.main(null);
+					telaMenuAlterar.setVisible(false);
 
 				} catch (InfoInvalidaException iIE) {
 
 				}
-				
+
 			}
 		});
 
