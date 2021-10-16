@@ -3,7 +3,6 @@ package br.com.projeto.edutech.interface_grafica;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -45,7 +44,6 @@ public class MenuPrincipal {
 	 * Create the application.
 	 */
 	public MenuPrincipal() {
-		this.serieDAO.setUltimoId();
 		initialize();
 	}
 
