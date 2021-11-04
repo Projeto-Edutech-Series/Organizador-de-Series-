@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 import br.com.projeto.edutech.dao.SeriesDAO;
 import br.com.projeto.edutech.modelo.Serie;
+import javax.swing.ListSelectionModel;
 
 public class MenuConsultar {
 
@@ -123,8 +124,8 @@ public class MenuConsultar {
 
 		// tabela
 		tabelaSeries = new JTable();
+		tabelaSeries.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(tabelaSeries);
-		tabelaSeries.setCellSelectionEnabled(true);
 		tabelaSeries.setShowVerticalLines(true);
 		tabelaSeries.setShowHorizontalLines(true);
 		tabelaSeries.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 255, 255), new Color(0, 0, 0)));
@@ -144,9 +145,6 @@ public class MenuConsultar {
 
 		botaoAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				Object objetoDaLinha = modelo.getValueAt(tabelaSeries.getSelectedRow(), tabelaSeries.getSelectedColumn());
-				String nomeColuna = tabelaSeries.getColumnName(tabelaSeries.getSelectedColumn());
 
 				String nome = (String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 0);
 				String status = (String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 1);
@@ -168,7 +166,7 @@ public class MenuConsultar {
 						episodios = Integer.parseInt((String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 3));
 					}
 				}
-				new MenuAlterar(nome, status, "" + temporadas, "" + episodios).main(null);
+				new MenuAlterar(nome, status, "" + temporadas, "" + episodios);
 				telaMenuConsultar.setVisible(false);
 			}
 		});

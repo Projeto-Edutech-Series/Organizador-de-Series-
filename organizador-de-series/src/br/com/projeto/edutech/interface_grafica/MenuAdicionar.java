@@ -68,7 +68,7 @@ public class MenuAdicionar {
 		telaMenuAdicionar.setBackground(SystemColor.desktop);
 		telaMenuAdicionar.getContentPane().setBackground(new Color(220, 220, 220));
 		telaMenuAdicionar.setTitle("ORGANIZADOR DE SÉRIES");
-		telaMenuAdicionar.setBounds(100, 100, 640, 480);
+		telaMenuAdicionar.setBounds(100, 100, 640, 500);
 		telaMenuAdicionar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		telaMenuAdicionar.getContentPane().setLayout(null);
 		telaMenuAdicionar.setLocation(600, 200);
@@ -198,8 +198,7 @@ public class MenuAdicionar {
 
 					if (!seriesDAO.jaExiste(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios))) {
 
-						if (seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios),
-								true)) {
+						if (seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios))) {
 
 							JOptionPane.showMessageDialog(null,
 									"A série " + "'" + campoNome.getText().strip() + "'" + " foi adicionada!",
@@ -208,6 +207,7 @@ public class MenuAdicionar {
 							campoNome.setText(null);
 							campoTemporadas.setText(null);
 							campoEpisodios.setText(null);
+							comboBoxStatus.setSelectedIndex(0);
 						}
 
 					} else {

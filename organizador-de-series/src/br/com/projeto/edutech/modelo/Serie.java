@@ -102,7 +102,6 @@ public class Serie implements Comparable<Serie> {
 		}
 
 		this.status = campoStatus.getSelectedItem().toString();
-		campoStatus.setSelectedIndex(0);
 	}
 
 	private void verificaInformacoes(String campoNome, String campoStatus, Integer campoTemporadas,

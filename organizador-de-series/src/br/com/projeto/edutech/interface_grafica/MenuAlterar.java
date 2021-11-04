@@ -3,41 +3,31 @@ package br.com.projeto.edutech.interface_grafica;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collection;
-import java.util.TreeSet;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.border.EtchedBorder;
-import javax.swing.table.DefaultTableModel;
 
 import br.com.projeto.edutech.dao.SeriesDAO;
-import br.com.projeto.edutech.modelo.InfoInvalidaException;
 import br.com.projeto.edutech.modelo.Serie;
 
 public class MenuAlterar {
 
 	private JFrame telaMenuAlterar;
-	private DefaultTableModel modelo;
-	private JTable tabelaSeries;
 	private SeriesDAO seriesDAO = new SeriesDAO();
 	private JButton botaoAlterar;
 	private JButton botaoVoltar;
-	public static String nomeAntigo;
-	public static String statusAntigo;
-	public static String temporadaAntiga;
-	public static String episodiosAntigos;
+	private String nomeAntigo;
+	private String statusAntigo;
+	private String temporadaAntiga;
+	private String episodiosAntigos;
 	
 
 	/**
@@ -73,6 +63,8 @@ public class MenuAlterar {
 		this.statusAntigo = status;
 		this.temporadaAntiga = temporadas;
 		this.episodiosAntigos = episodios;
+		
+		main(null);
 	}
 
 	/**
@@ -91,7 +83,7 @@ public class MenuAlterar {
 		telaMenuAlterar.setResizable(false);
 		telaMenuAlterar.getContentPane().setFont(new Font("SansSerif", Font.PLAIN, 12));
 		telaMenuAlterar.getContentPane().setBackground(new Color(220, 220, 220));
-		telaMenuAlterar.setBounds(100, 100, 640, 600);
+		telaMenuAlterar.setBounds(100, 100, 640, 500);
 		telaMenuAlterar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		telaMenuAlterar.setLocation(600, 200);
 		telaMenuAlterar.getContentPane().setLayout(null);
@@ -240,6 +232,7 @@ public class MenuAlterar {
 			public String novoStatus;
 			public Integer novaTemporada;
 			public Integer novosEpisodios;
+			
 			public void actionPerformed(ActionEvent e) {
 					seriesDAO.deletar(nomeAntigo);
 					if (!campoNome.getText().strip().isEmpty()) {
@@ -261,7 +254,7 @@ public class MenuAlterar {
 					comboBoxStatus.setSelectedIndex(0);
 					if (!seriesDAO.jaExiste(new Serie(novoNome, novoStatus, novaTemporada, novosEpisodios))) {
 						
-						if (seriesDAO.adiciona(new Serie(novoNome, novoStatus, novaTemporada, novosEpisodios), true)) {
+						if (seriesDAO.adiciona(new Serie(novoNome, novoStatus, novaTemporada, novosEpisodios))) {
 							JOptionPane.showMessageDialog(null,
 									"A série " + "'" + novoNome + "'" + " foi Atualizada!", "Série Atualizada!",
 									JOptionPane.INFORMATION_MESSAGE);
@@ -272,7 +265,7 @@ public class MenuAlterar {
 						MenuConsultar.main(null);
 						telaMenuAlterar.setVisible(false);
 					} else {
-						seriesDAO.adiciona(new Serie(nomeAntigo, statusAntigo, Integer.parseInt(episodiosAntigos), Integer.parseInt(episodiosAntigos)), true);
+						seriesDAO.adiciona(new Serie(nomeAntigo, statusAntigo, Integer.parseInt(episodiosAntigos), Integer.parseInt(episodiosAntigos)));
 						JOptionPane.showMessageDialog(null,
 								"A série " + "'" + campoNome.getText().strip() + "'" + " já esta no registro!");
 					}
