@@ -10,11 +10,13 @@ import java.util.Collection;
 import java.util.TreeSet;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
@@ -34,8 +36,8 @@ public class MenuAlterar {
 	private JButton botaoVoltar;
 	public static String nomeAntigo;
 	public static String statusAntigo;
-	public static Integer temporadaAntiga;
-	public static Integer episodiosAntigos;
+	public static String temporadaAntiga;
+	public static String episodiosAntigos;
 
 	/**
 	 * Launch the application.
@@ -68,8 +70,8 @@ public class MenuAlterar {
 	public MenuAlterar(String nome, String status, String temporadas, String episodios) {
 		this.nomeAntigo = nome;
 		this.statusAntigo = status;
-		this.temporadaAntiga = Integer.parseInt(temporadas);
-		this.episodiosAntigos = Integer.parseInt(episodios);
+		this.temporadaAntiga = temporadas;
+		this.episodiosAntigos = episodios;
 	}
 
 	/**
@@ -80,6 +82,7 @@ public class MenuAlterar {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
 		// cria o JFrame
 		telaMenuAlterar = new JFrame();
 		telaMenuAlterar.setFont(new Font("Arial", Font.BOLD, 12));
@@ -91,16 +94,120 @@ public class MenuAlterar {
 		telaMenuAlterar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		telaMenuAlterar.setLocation(600, 200);
 		telaMenuAlterar.getContentPane().setLayout(null);
+
+		// titulo
+		JLabel textoTitulo = new JLabel("Atualizar");
+		textoTitulo.setForeground(Color.BLACK);
+		textoTitulo.setBackground(Color.LIGHT_GRAY);
+		textoTitulo.setFont(new Font("Arial", Font.BOLD, 30));
+		textoTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		textoTitulo.setBounds(168, 10, 287, 36);
+		telaMenuAlterar.getContentPane().add(textoTitulo);
+
+		// nome
+		JLabel textoNome = new JLabel("NOME:");
+		textoNome.setBackground(Color.LIGHT_GRAY);
+		textoNome.setHorizontalAlignment(SwingConstants.LEFT);
+		textoNome.setFont(new Font("Arial", Font.BOLD, 20));
+		textoNome.setBounds(36, 70, 70, 24);
+		telaMenuAlterar.getContentPane().add(textoNome);
+
+		// texto nome antigo
+		JLabel textoNomeAntigo = new JLabel(nomeAntigo);
+		textoNomeAntigo.setHorizontalAlignment(SwingConstants.LEFT);
+		textoNomeAntigo.setFont(new Font("Arial", Font.PLAIN, 20));
+		textoNomeAntigo.setBackground(Color.LIGHT_GRAY);
+		textoNomeAntigo.setBounds(106, 70, 100, 24);
+		telaMenuAlterar.getContentPane().add(textoNomeAntigo);
+
+		// digita texto
+		JTextField campoNome = new JTextField();
+		campoNome.setBackground(Color.WHITE);
+		campoNome.setToolTipText("Digite o nome da série");
+		campoNome.setFont(new Font("Arial", Font.PLAIN, 18));
+		campoNome.setBounds(36, 90, 552, 36);
+		campoNome.setColumns(10);
+		telaMenuAlterar.getContentPane().add(campoNome);
 		//
 
-		// texto registro de séries
-		JLabel textoConsultarSries = new JLabel("Série: ");
-		textoConsultarSries.setHorizontalAlignment(SwingConstants.CENTER);
-		textoConsultarSries.setForeground(Color.BLACK);
-		textoConsultarSries.setFont(new Font("Arial", Font.BOLD, 30));
-		textoConsultarSries.setBackground(Color.LIGHT_GRAY);
-		textoConsultarSries.setBounds(118, 6, 393, 36);
-		telaMenuAlterar.getContentPane().add(textoConsultarSries);
+		//
+
+		// texto temporadas
+		JLabel textoTemporadas = new JLabel("TEMPORADAS:");
+		textoTemporadas.setHorizontalAlignment(SwingConstants.LEFT);
+		textoTemporadas.setFont(new Font("Arial", Font.BOLD, 20));
+		textoTemporadas.setBackground(Color.LIGHT_GRAY);
+		textoTemporadas.setBounds(36, 150, 150, 24);
+		telaMenuAlterar.getContentPane().add(textoTemporadas);
+
+		// temporadas antiga
+		JLabel textoTemporadaAntiga = new JLabel(temporadaAntiga);
+		textoTemporadaAntiga.setHorizontalAlignment(SwingConstants.LEFT);
+		textoTemporadaAntiga.setFont(new Font("Arial", Font.BOLD, 20));
+		textoTemporadaAntiga.setBackground(Color.LIGHT_GRAY);
+		textoTemporadaAntiga.setBounds(190, 150, 139, 24);
+		telaMenuAlterar.getContentPane().add(textoTemporadaAntiga);
+
+		// campo de texto das temporadas
+		JTextField campoTemporadas = new JTextField();
+		campoTemporadas.setBackground(Color.WHITE);
+		campoTemporadas.setToolTipText("Digite o número de temporadas");
+		campoTemporadas.setFont(new Font("Arial", Font.PLAIN, 18));
+		campoTemporadas.setBounds(36, 170, 552, 36);
+		telaMenuAlterar.getContentPane().add(campoTemporadas);
+		campoTemporadas.setColumns(10);
+		//
+
+		// texto episódios
+		JLabel textoEpisodios = new JLabel("EPISÓDIOS:");
+		textoEpisodios.setHorizontalAlignment(SwingConstants.LEFT);
+		textoEpisodios.setFont(new Font("Arial", Font.BOLD, 20));
+		textoEpisodios.setBackground(Color.LIGHT_GRAY);
+		textoEpisodios.setBounds(36, 230, 120, 24);
+		telaMenuAlterar.getContentPane().add(textoEpisodios);
+
+		JLabel textoEpisodiosAntigos = new JLabel(episodiosAntigos);
+		textoEpisodiosAntigos.setHorizontalAlignment(SwingConstants.LEFT);
+		textoEpisodiosAntigos.setFont(new Font("Arial", Font.BOLD, 20));
+		textoEpisodiosAntigos.setBackground(Color.LIGHT_GRAY);
+		textoEpisodiosAntigos.setBounds(160, 230, 108, 24);
+		telaMenuAlterar.getContentPane().add(textoEpisodiosAntigos);
+
+		// campo de texto dos episodios
+		JTextField campoEpisodios = new JTextField();
+		campoEpisodios.setBackground(Color.WHITE);
+		campoEpisodios.setToolTipText("Digite o número de episódios");
+		campoEpisodios.setFont(new Font("Arial", Font.PLAIN, 18));
+		campoEpisodios.setBounds(36, 250, 552, 36);
+		telaMenuAlterar.getContentPane().add(campoEpisodios);
+		campoEpisodios.setColumns(10);
+		//
+		// texto status
+		JLabel textoStatus = new JLabel("STATUS:");
+		textoStatus.setHorizontalAlignment(SwingConstants.LEFT);
+		textoStatus.setFont(new Font("Arial", Font.BOLD, 20));
+		textoStatus.setBackground(Color.LIGHT_GRAY);
+		textoStatus.setBounds(36, 310, 90, 24);
+		telaMenuAlterar.getContentPane().add(textoStatus);
+
+		JLabel textoStatusAntigo = new JLabel(statusAntigo);
+		textoStatusAntigo.setHorizontalAlignment(SwingConstants.LEFT);
+		textoStatusAntigo.setFont(new Font("Arial", Font.BOLD, 20));
+		textoStatusAntigo.setBackground(Color.LIGHT_GRAY);
+		textoStatusAntigo.setBounds(130, 310, 550, 24);
+		telaMenuAlterar.getContentPane().add(textoStatusAntigo);
+
+		// combo box do status
+		JComboBox<String> comboBoxStatus = new JComboBox<>();
+		comboBoxStatus.setBackground(Color.GRAY);
+		comboBoxStatus.setFont(new Font("Arial", Font.PLAIN, 18));
+		comboBoxStatus.addItem("ASSISTIDO");
+		comboBoxStatus.addItem("ASSISTIREI");
+		comboBoxStatus.addItem("ASSISTINDO");
+		comboBoxStatus.addItem("RETOMAREI");
+		comboBoxStatus.setToolTipText("Selecione o status");
+		comboBoxStatus.setBounds(36, 330, 552, 36);
+		telaMenuAlterar.getContentPane().add(comboBoxStatus);
 		//
 
 		// botão voltar
@@ -119,90 +226,37 @@ public class MenuAlterar {
 		botaoAlterar.setFont(new Font("Arial", Font.BOLD, 20));
 		botaoAlterar.setBounds(437, 400, 175, 36);
 		telaMenuAlterar.getContentPane().add(botaoAlterar);
-		//
-
-		// Scroll pane
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 88, 600, 300);
-		telaMenuAlterar.getContentPane().add(scrollPane);
-		//
-
-		// tabela
-		tabelaSeries = new JTable();
-		scrollPane.setViewportView(tabelaSeries);
-		tabelaSeries.setCellSelectionEnabled(true);
-		tabelaSeries.setShowVerticalLines(true);
-		tabelaSeries.setShowHorizontalLines(true);
-		tabelaSeries.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 255, 255), new Color(0, 0, 0)));
-		tabelaSeries.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		tabelaSeries.setBackground(SystemColor.inactiveCaptionBorder);
-		//
-
-		// modelo tabela
-		modelo = (DefaultTableModel) tabelaSeries.getModel();
-		modelo.addColumn("NOME");
-		modelo.addColumn("STATUS");
-		modelo.addColumn("TEMPORADAS");
-		modelo.addColumn("EPISODIOS");
-		//
-
-		preencherTabela();
-	}
-
-	private void preencherTabela() {
-		Collection<Serie> series = new TreeSet<Serie>(seriesDAO.listar());
-		try {
-			modelo.addRow(new Object[] { nomeAntigo, statusAntigo, temporadaAntiga, episodiosAntigos });
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-
-		botaoAlterar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				String nome = (String) modelo.getValueAt(0, 0);
-				String status = (String) modelo.getValueAt(0, 1);
-				Integer temporadas;
-				Integer episodios;
-
-				try {
-					temporadas = (Integer) modelo.getValueAt(0, 2);
-					try {
-						episodios = (Integer) modelo.getValueAt(0, 3);
-					} catch (ClassCastException ex1) {
-						episodios = Integer.parseInt((String) modelo.getValueAt(0, 3));
-					}
-				} catch (ClassCastException ex2) {
-					temporadas = Integer.parseInt((String) modelo.getValueAt(0, 2));
-					try {
-						episodios = (Integer) modelo.getValueAt(0, 3);
-					} catch (ClassCastException ex1) {
-						episodios = Integer.parseInt((String) modelo.getValueAt(0, 3));
-					}
-				}
-
-				try {
-					seriesDAO.deletar(nomeAntigo);
-					seriesDAO.adiciona(new Serie(nome, status, temporadas, episodios), true);
-
-					JOptionPane.showMessageDialog(null, "A série " + "'" + nome.strip() + "'" + " foi adicionada!",
-							"Série adicionada", JOptionPane.INFORMATION_MESSAGE);
-
-					MenuConsultar.main(null);
-					telaMenuAlterar.setVisible(false);
-
-				} catch (InfoInvalidaException iIE) {
-
-				}
-
-			}
-		});
 
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuConsultar.main(null);
 				telaMenuAlterar.setVisible(false);
 			}
+		});
+
+		botaoAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					seriesDAO.deletar(nomeAntigo);
+					if (!seriesDAO.jaExiste(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios))) {
+						if (seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios), true)) {
+							JOptionPane.showMessageDialog(null,
+									"A série " + "'" + campoNome.getText().strip() + "'" + " foi adicionada!", "Série adicionada",
+									JOptionPane.INFORMATION_MESSAGE);
+							campoNome.setText(null);
+							campoTemporadas.setText(null);
+							campoEpisodios.setText(null);
+						}
+						MenuConsultar.main(null);
+						telaMenuAlterar.setVisible(false);
+					} else {
+						seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios), true);
+						JOptionPane.showMessageDialog(null,
+								"A série " + "'" + campoNome.getText().strip() + "'" + " já esta no registro!");
+					}
+				} catch (InfoInvalidaException iIE) {
+				}
+			};
 		});
 	}
 }
