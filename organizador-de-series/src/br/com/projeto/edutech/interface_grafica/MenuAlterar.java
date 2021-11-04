@@ -38,6 +38,7 @@ public class MenuAlterar {
 	public static String statusAntigo;
 	public static String temporadaAntiga;
 	public static String episodiosAntigos;
+	
 
 	/**
 	 * Launch the application.
@@ -235,13 +236,34 @@ public class MenuAlterar {
 		});
 
 		botaoAlterar.addActionListener(new ActionListener() {
+			public String novoNome;
+			public String novoStatus;
+			public Integer novaTemporada;
+			public Integer novosEpisodios;
 			public void actionPerformed(ActionEvent e) {
-				try {
 					seriesDAO.deletar(nomeAntigo);
-					if (!seriesDAO.jaExiste(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios))) {
-						if (seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios), true)) {
+					if (!campoNome.getText().strip().isEmpty()) {
+						this.novoNome = campoNome.getText().strip();
+					} else {
+						this.novoNome = nomeAntigo;
+					}
+					if (!campoTemporadas.getText().strip().isEmpty()) {
+						this.novaTemporada = Integer.parseInt(campoTemporadas.getText().strip());
+					} else {
+						this.novaTemporada = Integer.parseInt(temporadaAntiga);
+					}
+					if (!campoEpisodios.getText().strip().isEmpty()) {
+						this.novosEpisodios = Integer.parseInt(campoEpisodios.getText().strip());
+					} else {
+						this.novosEpisodios = Integer.parseInt(episodiosAntigos);
+					}
+					this.novoStatus = comboBoxStatus.getSelectedItem().toString();
+					comboBoxStatus.setSelectedIndex(0);
+					if (!seriesDAO.jaExiste(new Serie(novoNome, novoStatus, novaTemporada, novosEpisodios))) {
+						
+						if (seriesDAO.adiciona(new Serie(novoNome, novoStatus, novaTemporada, novosEpisodios), true)) {
 							JOptionPane.showMessageDialog(null,
-									"A série " + "'" + campoNome.getText().strip() + "'" + " foi adicionada!", "Série adicionada",
+									"A série " + "'" + novoNome + "'" + " foi Atualizada!", "Série Atualizada!",
 									JOptionPane.INFORMATION_MESSAGE);
 							campoNome.setText(null);
 							campoTemporadas.setText(null);
@@ -250,12 +272,10 @@ public class MenuAlterar {
 						MenuConsultar.main(null);
 						telaMenuAlterar.setVisible(false);
 					} else {
-						seriesDAO.adiciona(new Serie(campoNome, comboBoxStatus, campoTemporadas, campoEpisodios), true);
+						seriesDAO.adiciona(new Serie(nomeAntigo, statusAntigo, Integer.parseInt(episodiosAntigos), Integer.parseInt(episodiosAntigos)), true);
 						JOptionPane.showMessageDialog(null,
 								"A série " + "'" + campoNome.getText().strip() + "'" + " já esta no registro!");
 					}
-				} catch (InfoInvalidaException iIE) {
-				}
 			};
 		});
 	}
