@@ -24,7 +24,7 @@ import br.com.projeto.edutech.modelo.Serie;
  */
 public class SeriesDAO {
 
-	private File arquivo = new File("C://Organizador de séries//dados//series.csv");
+	private File arquivo = new File("C://Organizador de Series//dados//series.csv");
 
 	public boolean adiciona(Serie serie, boolean append) {
 		pathBuilder();
@@ -127,7 +127,7 @@ public class SeriesDAO {
 	public void pathBuilder() {
 		try {
 			if (!arquivo.exists()) {
-				Files.createDirectories(Paths.get("C://Organizador de séries//dados"));
+				Files.createDirectories(Paths.get("C://Organizador de Series//dados"));
 				try (FileWriter writer = new FileWriter(arquivo, true)) {}
 			}
 		} catch (IOException e1) {
