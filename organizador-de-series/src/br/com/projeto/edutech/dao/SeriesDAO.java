@@ -72,42 +72,6 @@ public class SeriesDAO {
 		return lista;
 	}
 
-	public void alterar(String nomeNovo, String statusNovo, Integer temporadasNova,
-			Integer episodiosNovo) {
-		List<Serie> series = listar();
-		try {
-			new FileWriter(arquivo).close();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-
-		for (Serie serie : series) {
-//			if (idSerie.equals(serie.getId())) {
-				try {
-//					serie = new Serie(nomeNovo, statusNovo, temporadasNova, episodiosNovo, idSerie);
-					adiciona(serie, false);
-
-				} catch (InfoInvalidaException e) {
-
-					try {
-						new FileWriter(arquivo).close();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-
-					for (Serie serie2 : series) {
-						adiciona(serie2, false);
-					}
-
-					throw new RuntimeException(e);
-				}
-//			} else {
-				adiciona(serie, false);
-			}
-
-		}
-//	}
-
 	public void deletar(String nome) {
 		List<Serie> series = listar();
 		try {
