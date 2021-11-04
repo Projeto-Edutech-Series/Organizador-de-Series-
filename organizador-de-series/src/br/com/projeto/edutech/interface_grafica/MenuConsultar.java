@@ -190,7 +190,6 @@ public class MenuConsultar {
 
 	}
 
-
 	private void preencherTabela() {
 		Collection<Serie> series = new TreeSet<Serie>(serieDAO.listar());
 		try {
@@ -204,24 +203,14 @@ public class MenuConsultar {
 
 	private void deletar() {
 		try {
-			Object objetoDaLinha = modelo.getValueAt(tabelaSeries.getSelectedRow(), tabelaSeries.getSelectedColumn());
-			String nomeColuna = tabelaSeries.getColumnName(tabelaSeries.getSelectedColumn());
-
-			if (objetoDaLinha instanceof String && nomeColuna.equals("NOME")) {
-				String nome = (String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 1);
-
-				this.serieDAO.deletar(nome);
-				JOptionPane.showMessageDialog(null, "Deletado com sucesso", "Alteração bem sucedida",
-						JOptionPane.INFORMATION_MESSAGE);
-			} else {
-				JOptionPane.showMessageDialog(null, "Por favor, selecione o nome da série a ser deletada",
-						"Nome não selecionado", JOptionPane.INFORMATION_MESSAGE);
-			}
+			String nome = (String) modelo.getValueAt(tabelaSeries.getSelectedRow(), 0);
+			this.serieDAO.deletar(nome);
+			JOptionPane.showMessageDialog(null, "Deletado com sucesso", "Alteração bem sucedida",
+					JOptionPane.INFORMATION_MESSAGE);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 
 	private void limparTabela() {
 		List<Serie> series = serieDAO.listar();
