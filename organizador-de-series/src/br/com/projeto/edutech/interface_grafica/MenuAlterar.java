@@ -24,10 +24,10 @@ public class MenuAlterar {
 	private SeriesDAO seriesDAO = new SeriesDAO();
 	private JButton botaoAlterar;
 	private JButton botaoVoltar;
-	private String nomeAntigo;
-	private String statusAntigo;
-	private String temporadaAntiga;
-	private String episodiosAntigos;
+	public static String nomeAntigo;
+	public static String statusAntigo;
+	public static String temporadaAntiga;
+	public static String episodiosAntigos;
 	
 
 	/**
@@ -54,22 +54,21 @@ public class MenuAlterar {
 		});
 	}
 
+	/**
+	 * Create the application.
+	 */
 	public MenuAlterar() {
 		initialize();
 	}
 
 	public MenuAlterar(String nome, String status, String temporadas, String episodios) {
-		this.nomeAntigo = nome;
-		this.statusAntigo = status;
-		this.temporadaAntiga = temporadas;
-		this.episodiosAntigos = episodios;
+		nomeAntigo = nome;
+		statusAntigo = status;
+		temporadaAntiga = temporadas;
+		episodiosAntigos = episodios;
 		
 		main(null);
 	}
-
-	/**
-	 * Create the application.
-	 */
 
 	/**
 	 * Initialize the contents of the frame.
